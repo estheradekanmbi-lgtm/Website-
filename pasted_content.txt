@@ -1,0 +1,78 @@
+ROLE: You are a Senior Frontend Engineer + UI/UX Designer from Stripe and Apple.
+
+TASK: Build a complete, production-ready personal portfolio website for a Data Analyst using ONLY HTML5, CSS3, and Vanilla JavaScript. Must be deployable on GitHub Pages.
+
+STEP 1 - ASK ME FIRST:
+Before writing any code, ask me these questions one by one. If I say "skip" or leave blank, use the placeholder format below.
+
+QUESTIONS TO ASK:
+1\.  Full Name:
+2\.  One-line Value Proposition / Tagline:
+3\.  About Me: 3-4 sentences about background and career goal
+4\.  Education: Degree, School, Year
+5\.  Top 6 Core Skills: Name + 1 line description for each
+6\.  Featured Project: Name, Problem, Tools, 2 Insights, 1 Recommendation, GitHub Link
+7\.  2 Other Projects: Name + 1 line description + Tech used
+8\.  Learning/Certificates: 3 items with Name, Issuer, Year
+9\.  Contact: Email, LinkedIn URL, GitHub URL
+10\. Accent Color Preference: Choose 1 - Amber, Teal, Purple, or Rose
+
+RULE FOR MISSING ANSWERS:
+If I skip any answer, do NOT make up data. Insert this exact placeholder in the code:
+\<!-- EDIT ME: Add your \[section name\] here --\>
+
+STEP 2 - DESIGN REQUIREMENTS:
+Goal: Look hand-coded, premium, editorial. Not AI, not template.
+
+BANNED: 
+No frameworks. No Tailwind. No Bootstrap. No emojis. No charts. No graphs. 
+No fake numbers like "5+ projects". No progress bars. No "85% SQL".
+No colorful blobs. No cartoon illustrations.
+
+ALLOWED STYLE INSPIRATION: Apple.com, Linear.app, Vercel.com, Notion.so
+Vibe: Clean, minimal, luxury, lots of white space
+
+COLOR PALETTE - USE CSS VARIABLES:
+--primary: #1E293B
+--secondary: #334155
+--accent: #F59E0B  /\* use the one I chose in Q10 \*/
+--bg: #F8FAFC
+--card: #FFFFFF
+--text: #0F172A
+--muted: #64748B
+--border: #E2E8F0
+--success: #10B981
+
+TYPOGRAPHY:
+Headings: Manrope 600-800
+Body: Inter 400-500
+Load from Google Fonts. Large headings. 1.6 line-height.
+
+STEP 3 - SITE STRUCTURE & CONTENT:
+1\.  Header: Sticky, glass effect, logo, nav links, light/dark toggle
+2\.  Hero: Name H1, Tagline P, 2 buttons "View Work" "Download Resume", Professional portrait on right
+3\.  About: H2, 2 paragraphs, Education line
+4\.  Skills: H2, Grid of 6 cards. Each card: Skill Name H3 + 1 line description P. No %
+5\.  Featured Project: H2, Big case study card. Sections: Problem, Dataset, Tools, Process, Insights, Recommendation, GitHub Button
+6\.  Other Projects: H2, Grid of 2 project cards with image placeholder, title, description, tech tags
+7\.  Learning: H2, Vertical timeline
+8\.  Certificates: H2, Grid of cards with name, issuer, year, "View" link
+9\.  Contact: H2, Contact info card + simple form with name, email, message
+10\. Footer: Copyright, simple text
+
+STEP 4 - TECHNICAL REQUIREMENTS:
+1\.  Responsive: Mobile-first. Must work on 360px to 1440px
+2\.  Features: Smooth scroll, Active nav highlight, Scroll reveal fade-in, Light/Dark mode with localStorage
+3\.  Performance: Lazy loading images, Semantic HTML, No duplicate CSS
+4\.  Accessibility: WCAG AA contrast, Keyboard focus states, ARIA labels, Alt text
+5\.  SEO: Meta title, description, Open Graph tags, basic JSON-LD schema
+6\.  Code Quality: CSS variables, comments for each section, reusable classes
+
+STEP 5 - OUTPUT FORMAT:
+Give me 4 files in code blocks:
+1\.  index.html
+2\.  style.css  
+3\.  script.js
+4\.  README.md with "How to edit" and "How to deploy to GitHub Pages"
+
+FINAL RULE: The code must look like a human wrote it over 2 days. Not generated. Not perfect. Real comments, real spacing.
