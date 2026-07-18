@@ -1,1186 +1,969 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  <!-- SEO Meta Tags -->
-  <title>Esther Adekanmbi | Data Analyst Portfolio</title>
-  <meta name="description" content="Esther Adekanmbi – Computer Science undergraduate and aspiring Data Analyst. Skilled in Excel, SQL, Power BI, and Python. View projects, dashboards, and get in touch." />
-  <meta name="keywords" content="Esther Adekanmbi, Data Analyst, Excel, SQL, Power BI, Python, Portfolio, Computer Science" />
+  <!-- Primary Meta -->
+  <title>Esther Adekanmbi — Data Analyst Portfolio</title>
+  <meta name="description" content="Esther Adekanmbi is a Computer Science undergraduate and aspiring Data Analyst skilled in SQL, Power BI, Excel, Python, and data storytelling." />
+  <meta name="keywords" content="Data Analyst, SQL, Power BI, Python, Excel, Data Visualization, Business Intelligence, Portfolio, Esther Adekanmbi" />
   <meta name="author" content="Esther Adekanmbi" />
   <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://yourdomain.github.io/" />
 
-  <!-- Open Graph / Social -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Esther Adekanmbi | Data Analyst Portfolio" />
-  <meta property="og:description" content="Aspiring Data Analyst transforming raw data into meaningful insights. Excel • SQL • Power BI • Python." />
-  <meta property="og:image" content="assets/images/placeholder.jpg" />
-  <meta property="og:url" content="https://estheradekanmbi.github.io" />
+  <meta property="og:url" content="https://yourdomain.github.io/" />
+  <meta property="og:title" content="Esther Adekanmbi — Data Analyst Portfolio" />
+  <meta property="og:description" content="Turning raw data into actionable business insights. Computer Science undergraduate specializing in data analytics, visualization, and intelligence." />
+  <meta property="og:image" content="assets/images/og-image.jpg" />
+  <meta property="og:site_name" content="Esther Adekanmbi Portfolio" />
+
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Esther Adekanmbi | Data Analyst Portfolio" />
-  <meta name="twitter:description" content="Aspiring Data Analyst transforming raw data into meaningful insights." />
+  <meta name="twitter:title" content="Esther Adekanmbi — Data Analyst Portfolio" />
+  <meta name="twitter:description" content="Turning raw data into actionable business insights." />
+  <meta name="twitter:image" content="assets/images/og-image.jpg" />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%237C3AED'/><text x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' fill='white' font-size='18' font-weight='bold' font-family='system-ui'>EA</text></svg>" />
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Esther Adekanmbi",
+    "url": "https://yourdomain.github.io/",
+    "jobTitle": "Data Analyst",
+    "alumniOf": "University (CS undergraduate)",
+    "knowsAbout": ["Data Analysis", "SQL", "Power BI", "Python", "Excel", "Data Visualization"],
+    "sameAs": [
+      "https://linkedin.com/in/YOUR_LINKEDIN",
+      "https://github.com/YOUR_GITHUB"
+    ]
+  }
+  </script>
 
-  <!-- Google Fonts -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;600;700;800&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Main Stylesheet -->
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="light-mode" data-theme="light">
+<body>
 
-  <!-- ===== LOADING SCREEN ===== -->
-  <div id="loading-screen" role="status" aria-label="Loading portfolio">
-    <div class="loader-content">
-      <div class="loader-logo">EA</div>
-      <div class="loader-bar"><div class="loader-fill"></div></div>
-      <p class="loader-text">Loading portfolio…</p>
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scrollProgress" role="progressbar" aria-label="Page scroll progress"></div>
+
+  <!-- Loading Screen -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <div class="loader__logo">EA</div>
+      <div class="loader__bar"><div class="loader__fill"></div></div>
     </div>
   </div>
 
-  <!-- ===== SCROLL PROGRESS BAR ===== -->
-  <div id="scroll-progress" role="progressbar" aria-label="Page scroll progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+  <!-- Navigation -->
+  <header class="nav" id="nav" role="banner">
+    <nav class="nav__container" aria-label="Main navigation">
+      <a href="#hero" class="nav__logo" aria-label="Esther Adekanmbi — Home">
+        <span class="nav__logo-mark">EA</span>
+        <span class="nav__logo-text">Esther Adekanmbi</span>
+      </a>
 
-  <!-- ===== NAVIGATION ===== -->
-  <header id="navbar" role="banner">
-    <nav class="nav-container" aria-label="Main navigation">
-      <a href="#home" class="nav-logo" aria-label="Esther Adekanmbi – go to top">EA</a>
-
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
-        <span class="hamburger"></span>
-        <span class="hamburger"></span>
-        <span class="hamburger"></span>
-      </button>
-
-      <ul class="nav-links" id="nav-links" role="list">
-        <li><a href="#home" class="nav-link active" aria-current="page">Home</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#skills" class="nav-link">Skills</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#journey" class="nav-link">Journey</a></li>
-        <li><a href="#certifications" class="nav-link">Certifications</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
+      <ul class="nav__links" id="navLinks" role="list">
+        <li><a href="#about" class="nav__link" data-section="about">About</a></li>
+        <li><a href="#skills" class="nav__link" data-section="skills">Skills</a></li>
+        <li><a href="#project" class="nav__link" data-section="project">Case Study</a></li>
+        <li><a href="#gallery" class="nav__link" data-section="gallery">Projects</a></li>
+        <li><a href="#journey" class="nav__link" data-section="journey">Journey</a></li>
+        <li><a href="#certificates" class="nav__link" data-section="certificates">Certifications</a></li>
+        <li><a href="#contact" class="nav__link" data-section="contact">Contact</a></li>
       </ul>
 
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode">
-        <span class="theme-icon" aria-hidden="true">🌙</span>
-      </button>
+      <div class="nav__actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+          <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </span>
+          <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </span>
+        </button>
+        <a href="assets/resume/Esther_Adekanmbi_CV.pdf" class="btn btn--sm btn--outline" download aria-label="Download Resume">
+          Resume
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </a>
+        <button class="nav__toggle" id="navToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </nav>
   </header>
 
   <main id="main-content">
 
-    <!-- ===== HERO SECTION ===== -->
-    <section id="home" class="hero-section" aria-label="Hero introduction">
-      <div class="hero-bg-gradient" aria-hidden="true"></div>
-      <div class="hero-particles" aria-hidden="true" id="hero-particles"></div>
-
-      <div class="hero-content">
-        <div class="hero-text">
-          <div class="hero-badge fade-in-up" aria-label="Status">
-            <span class="badge-dot" aria-hidden="true"></span>
-            Open to Internships &amp; Freelance
+    <!-- ═══════════════════ HERO ═══════════════════ -->
+    <section class="hero" id="hero" aria-label="Introduction">
+      <div class="hero__container">
+        <div class="hero__content">
+          <div class="hero__eyebrow reveal">
+            <span class="hero__badge">Available for opportunities</span>
           </div>
-
-          <h1 class="hero-title fade-in-up delay-1">
-            Hi, I'm <span class="gradient-text">Esther Adekanmbi</span>
+          <h1 class="hero__headline reveal">
+            Turning data into<br />
+            <span class="hero__highlight" id="typingText"></span>
           </h1>
-
-          <p class="hero-typing fade-in-up delay-2" aria-live="polite" aria-atomic="true">
-            <span id="typing-text"></span><span class="typing-cursor" aria-hidden="true">|</span>
+          <p class="hero__sub reveal">
+            Computer Science undergraduate and aspiring Data Analyst. I transform complex datasets into clear, 
+            actionable insights that drive business decisions — using SQL, Power BI, Python, and Excel.
           </p>
-
-          <p class="hero-subtitle fade-in-up delay-3">
-            Data Analyst &nbsp;|&nbsp; Excel &bull; SQL &bull; Power BI &bull; Python
-          </p>
-
-          <p class="hero-bio fade-in-up delay-4">
-            I enjoy transforming raw data into meaningful insights through data cleaning, analysis, 
-            visualization, and dashboard creation. I'm continuously improving my skills while building 
-            practical projects that solve real-world business problems.
-          </p>
-
-          <div class="hero-ctas fade-in-up delay-5">
-            <a href="#projects" class="btn btn-primary">
-              <span>View Projects</span>
-              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          <div class="hero__actions reveal">
+            <a href="#project" class="btn btn--primary" aria-label="View featured case study">
+              View Case Study
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
-            <a href="assets/resume/Esther_Adekanmbi_CV.pdf" class="btn btn-secondary" download aria-label="Download CV (PDF)">
-              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-              <span>Download CV</span>
-            </a>
-            <a href="#contact" class="btn btn-outline">Contact Me</a>
-          </div>
-
-          <!-- Quick Stats -->
-          <div class="hero-stats fade-in-up delay-5" aria-label="Quick stats">
-            <div class="hero-stat">
-              <strong>8+</strong><span>Projects</span>
-            </div>
-            <div class="hero-stat-divider" aria-hidden="true"></div>
-            <div class="hero-stat">
-              <strong>5</strong><span>Dashboards</span>
-            </div>
-            <div class="hero-stat-divider" aria-hidden="true"></div>
-            <div class="hero-stat">
-              <strong>200+</strong><span>Hours</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Dashboard SVG Illustration -->
-        <div class="hero-illustration fade-in-up delay-3" aria-hidden="true">
-          <div class="dashboard-mockup">
-            <div class="dash-header">
-              <div class="dash-dots">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
-              </div>
-              <span class="dash-title">Analytics Dashboard</span>
-            </div>
-            <div class="dash-body">
-              <div class="dash-kpis">
-                <div class="dash-kpi purple">
-                  <div class="kpi-val">8,240</div>
-                  <div class="kpi-lbl">Total Records</div>
-                  <div class="kpi-trend up">▲ 12%</div>
-                </div>
-                <div class="dash-kpi blue">
-                  <div class="kpi-val">94.2%</div>
-                  <div class="kpi-lbl">Completion Rate</div>
-                  <div class="kpi-trend up">▲ 4%</div>
-                </div>
-                <div class="dash-kpi green">
-                  <div class="kpi-val">156</div>
-                  <div class="kpi-lbl">Active Learners</div>
-                  <div class="kpi-trend up">▲ 8%</div>
-                </div>
-              </div>
-              <div class="dash-chart">
-                <div class="chart-bars">
-                  <div class="bar" style="--h:60%"><span class="bar-lbl">Jan</span></div>
-                  <div class="bar" style="--h:80%"><span class="bar-lbl">Feb</span></div>
-                  <div class="bar" style="--h:55%"><span class="bar-lbl">Mar</span></div>
-                  <div class="bar" style="--h:90%"><span class="bar-lbl">Apr</span></div>
-                  <div class="bar" style="--h:75%"><span class="bar-lbl">May</span></div>
-                  <div class="bar" style="--h:85%"><span class="bar-lbl">Jun</span></div>
-                </div>
-              </div>
-              <div class="dash-table">
-                <div class="table-row header">
-                  <span>Name</span><span>Score</span><span>Status</span>
-                </div>
-                <div class="table-row">
-                  <span>Module A</span><span>92%</span><span class="status-badge pass">Pass</span>
-                </div>
-                <div class="table-row">
-                  <span>Module B</span><span>78%</span><span class="status-badge pass">Pass</span>
-                </div>
-                <div class="table-row">
-                  <span>Module C</span><span>65%</span><span class="status-badge review">Review</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Scroll Indicator -->
-      <a href="#about" class="scroll-indicator" aria-label="Scroll to about section">
-        <span class="scroll-text">Scroll</span>
-        <div class="scroll-arrow" aria-hidden="true"></div>
-      </a>
-    </section>
-
-    <!-- ===== STATS SECTION ===== -->
-    <section id="stats" class="stats-section" aria-label="Key statistics">
-      <div class="container">
-        <div class="stats-grid">
-          <div class="stat-card animate-on-scroll">
-            <div class="stat-number" data-target="8" data-suffix="+">0</div>
-            <div class="stat-label">Projects Completed</div>
-          </div>
-          <div class="stat-card animate-on-scroll">
-            <div class="stat-number" data-target="8" data-suffix="">0</div>
-            <div class="stat-label">Technical Skills</div>
-          </div>
-          <div class="stat-card animate-on-scroll">
-            <div class="stat-number" data-target="5" data-suffix="">0</div>
-            <div class="stat-label">Dashboards Built</div>
-          </div>
-          <div class="stat-card animate-on-scroll">
-            <div class="stat-number" data-target="200" data-suffix="+">0</div>
-            <div class="stat-label">Hours of Learning</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== ABOUT SECTION ===== -->
-    <section id="about" class="about-section section" aria-labelledby="about-heading">
-      <div class="container">
-        <div class="section-header animate-on-scroll">
-          <span class="section-tag">Get to Know Me</span>
-          <h2 id="about-heading" class="section-title">About <span class="gradient-text">Me</span></h2>
-          <p class="section-subtitle">A passionate data enthusiast turning numbers into narratives</p>
-        </div>
-
-        <div class="about-grid">
-          <!-- Photo -->
-          <div class="about-photo-wrapper animate-on-scroll">
-            <div class="about-photo-frame">
-              <img 
-                src="assets/images/placeholder.jpg" 
-                alt="Esther Adekanmbi – professional headshot" 
-                class="about-photo"
-                loading="lazy"
-                width="400"
-                height="400"
-              />
-              <div class="photo-badge">
-                <span class="photo-badge-icon" aria-hidden="true">🎓</span>
-                CS Undergraduate
-              </div>
-            </div>
-            <div class="about-socials" aria-label="Social links">
-              <a href="#" class="social-link" aria-label="GitHub profile" rel="noopener noreferrer" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-              </a>
-              <a href="#" class="social-link" aria-label="LinkedIn profile" rel="noopener noreferrer" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              </a>
-              <a href="mailto:esther@email.com" class="social-link" aria-label="Email Esther">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-              </a>
-            </div>
-          </div>
-
-          <!-- Text -->
-          <div class="about-text animate-on-scroll">
-            <h3 class="about-name">Esther Adekanmbi</h3>
-            <p class="about-role">Computer Science Undergraduate &amp; Aspiring Data Analyst</p>
-
-            <p class="about-para">
-              I'm a Computer Science undergraduate with a genuine passion for data and business intelligence. 
-              My journey into data analytics started with curiosity about how businesses make decisions — 
-              and I've been hooked ever since.
-            </p>
-            <p class="about-para">
-              I specialize in transforming raw, messy datasets into clean, structured insights using 
-              <strong>Excel</strong>, <strong>SQL</strong>, <strong>Power BI</strong>, and <strong>Python</strong>. 
-              I'm a believer in data-driven decision-making and I enjoy the full pipeline: from data 
-              cleaning and exploratory analysis, to crafting dashboards that tell a compelling story.
-            </p>
-            <p class="about-para">
-              When I'm not analyzing data, I'm participating in structured learning programs, building 
-              portfolio projects, and working toward industry certifications. I'm actively seeking 
-              <strong>Data Analyst internships</strong> and <strong>freelance opportunities</strong> 
-              where I can add real value.
-            </p>
-
-            <ul class="about-highlights" aria-label="Key facts">
-              <li>
-                <span class="highlight-icon" aria-hidden="true">🎓</span>
-                <span>Computer Science undergraduate</span>
-              </li>
-              <li>
-                <span class="highlight-icon" aria-hidden="true">📊</span>
-                <span>Excel, SQL, Power BI &amp; Python practitioner</span>
-              </li>
-              <li>
-                <span class="highlight-icon" aria-hidden="true">🌍</span>
-                <span>Open to remote &amp; on-site internships</span>
-              </li>
-              <li>
-                <span class="highlight-icon" aria-hidden="true">⚡</span>
-                <span>Fast learner with strong analytical mindset</span>
-              </li>
-            </ul>
-
-            <a href="assets/resume/Esther_Adekanmbi_CV.pdf" class="btn btn-primary" download aria-label="Download Esther's CV">
-              Download CV
-              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            <a href="assets/resume/Esther_Adekanmbi_CV.pdf" class="btn btn--ghost" download aria-label="Download resume">
+              Download Resume
             </a>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== SKILLS SECTION ===== -->
-    <section id="skills" class="skills-section section" aria-labelledby="skills-heading">
-      <div class="container">
-        <div class="section-header animate-on-scroll">
-          <span class="section-tag">What I Know</span>
-          <h2 id="skills-heading" class="section-title">My <span class="gradient-text">Skills</span></h2>
-          <p class="section-subtitle">A growing toolkit built through hands-on projects and continuous learning</p>
-        </div>
-
-        <!-- Tab Buttons -->
-        <div class="skills-tabs" role="tablist" aria-label="Skill categories">
-          <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-technical" id="btn-technical" data-tab="technical">
-            ⚙️ Technical Skills
-          </button>
-          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-professional" id="btn-professional" data-tab="professional">
-            💡 Professional Skills
-          </button>
-        </div>
-
-        <!-- Technical Skills Tab -->
-        <div class="tab-content active" id="tab-technical" role="tabpanel" aria-labelledby="btn-technical">
-          <div class="skills-grid">
-
-            <div class="skill-card animate-on-scroll">
-              <div class="skill-header">
-                <div class="skill-icon excel" aria-hidden="true">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                </div>
-                <div>
-                  <h3 class="skill-name">Microsoft Excel</h3>
-                  <p class="skill-level">Advanced</p>
-                </div>
-                <span class="skill-pct">85%</span>
-              </div>
-              <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="Excel proficiency 85%">
-                <div class="skill-fill" data-width="85"></div>
-              </div>
-              <ul class="skill-tags" aria-label="Excel sub-skills">
-                <li class="skill-tag">Pivot Tables</li>
-                <li class="skill-tag">VLOOKUP</li>
-                <li class="skill-tag">Power Query</li>
-                <li class="skill-tag">Charts</li>
-                <li class="skill-tag">Conditional Formatting</li>
-              </ul>
+          <div class="hero__stats reveal">
+            <div class="hero__stat">
+              <span class="hero__stat-number" data-count="5">0</span><span>+</span>
+              <span class="hero__stat-label">Projects</span>
             </div>
-
-            <div class="skill-card animate-on-scroll">
-              <div class="skill-header">
-                <div class="skill-icon sql" aria-hidden="true">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
-                </div>
-                <div>
-                  <h3 class="skill-name">SQL</h3>
-                  <p class="skill-level">Intermediate</p>
-                </div>
-                <span class="skill-pct">70%</span>
-              </div>
-              <div class="skill-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" aria-label="SQL proficiency 70%">
-                <div class="skill-fill" data-width="70"></div>
-              </div>
-              <ul class="skill-tags" aria-label="SQL sub-skills">
-                <li class="skill-tag">SELECT / JOINs</li>
-                <li class="skill-tag">Aggregations</li>
-                <li class="skill-tag">Subqueries</li>
-                <li class="skill-tag">CTEs</li>
-                <li class="skill-tag">MySQL</li>
-              </ul>
+            <div class="hero__stat-divider" aria-hidden="true"></div>
+            <div class="hero__stat">
+              <span class="hero__stat-number" data-count="6">0</span><span>+</span>
+              <span class="hero__stat-label">Tools</span>
             </div>
-
-            <div class="skill-card animate-on-scroll">
-              <div class="skill-header">
-                <div class="skill-icon powerbi" aria-hidden="true">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/></svg>
-                </div>
-                <div>
-                  <h3 class="skill-name">Power BI</h3>
-                  <p class="skill-level">Intermediate</p>
-                </div>
-                <span class="skill-pct">75%</span>
-              </div>
-              <div class="skill-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" aria-label="Power BI proficiency 75%">
-                <div class="skill-fill" data-width="75"></div>
-              </div>
-              <ul class="skill-tags" aria-label="Power BI sub-skills">
-                <li class="skill-tag">DAX</li>
-                <li class="skill-tag">Data Modelling</li>
-                <li class="skill-tag">Dashboards</li>
-                <li class="skill-tag">Power Query</li>
-                <li class="skill-tag">Reports</li>
-              </ul>
+            <div class="hero__stat-divider" aria-hidden="true"></div>
+            <div class="hero__stat">
+              <span class="hero__stat-number" data-count="3">0</span><span>+</span>
+              <span class="hero__stat-label">Certifications</span>
             </div>
-
-            <div class="skill-card animate-on-scroll">
-              <div class="skill-header">
-                <div class="skill-icon python" aria-hidden="true">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-                </div>
-                <div>
-                  <h3 class="skill-name">Python</h3>
-                  <p class="skill-level">Learning</p>
-                </div>
-                <span class="skill-pct">60%</span>
-              </div>
-              <div class="skill-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" aria-label="Python proficiency 60%">
-                <div class="skill-fill" data-width="60"></div>
-              </div>
-              <ul class="skill-tags" aria-label="Python sub-skills">
-                <li class="skill-tag">Pandas</li>
-                <li class="skill-tag">NumPy</li>
-                <li class="skill-tag">Matplotlib</li>
-                <li class="skill-tag">Data Cleaning</li>
-                <li class="skill-tag">EDA</li>
-              </ul>
-            </div>
-
-            <div class="skill-card animate-on-scroll">
-              <div class="skill-header">
-                <div class="skill-icon data" aria-hidden="true">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-                </div>
-                <div>
-                  <h3 class="skill-name">Data Analysis</h3>
-                  <p class="skill-level">Intermediate</p>
-                </div>
-                <span class="skill-pct">80%</span>
-              </div>
-              <div class="skill-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="Data Analysis proficiency 80%">
-                <div class="skill-fill" data-width="80"></div>
-              </div>
-              <ul class="skill-tags" aria-label="Data Analysis sub-skills">
-                <li class="skill-tag">Data Cleaning</li>
-                <li class="skill-tag">EDA</li>
-                <li class="skill-tag">Storytelling</li>
-                <li class="skill-tag">Statistics</li>
-              </ul>
-            </div>
-
-            <div class="skill-card animate-on-scroll">
-              <div class="skill-header">
-                <div class="skill-icon viz" aria-hidden="true">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/></svg>
-                </div>
-                <div>
-                  <h3 class="skill-name">Data Visualisation</h3>
-                  <p class="skill-level">Intermediate</p>
-                </div>
-                <span class="skill-pct">78%</span>
-              </div>
-              <div class="skill-bar" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" aria-label="Data Visualisation proficiency 78%">
-                <div class="skill-fill" data-width="78"></div>
-              </div>
-              <ul class="skill-tags" aria-label="Data Visualisation sub-skills">
-                <li class="skill-tag">Power BI</li>
-                <li class="skill-tag">Excel Charts</li>
-                <li class="skill-tag">Matplotlib</li>
-                <li class="skill-tag">Design Thinking</li>
-              </ul>
-            </div>
-
           </div>
         </div>
-
-        <!-- Professional Skills Tab -->
-        <div class="tab-content" id="tab-professional" role="tabpanel" aria-labelledby="btn-professional" hidden>
-          <div class="skills-grid">
-
-            <div class="skill-card animate-on-scroll">
-              <div class="skill-header">
-                <div class="skill-icon soft" aria-hidden="true">🧩</div>
-                <div>
-                  <h3 class="skill-name">Problem Solving</h3>
-                  <p class="skill-level">Strong</p>
-                </div>
-                <span class="skill-pct">90%</span>
-              </div>
-              <div class="skill-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Problem Solving 90%">
-                <div class="skill-fill" data-width="90"></div>
-              </div>
-            </div>
-
-            <div class="skill-card animate-on-scroll">
-              <div class="skill-header">
-                <div class="skill-icon soft" aria-hidden="true">💬</div>
-                <div>
-                  <h3 class="skill-name">Communication</h3>
-                  <p class="skill-level">Strong</p>
-                </div>
-                <span class="skill-pct">85%</span>
-              </div>
-              <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="Communication 85%">
-                <div class="skill-fill" data-width="85"></div>
+        <div class="hero__visual reveal">
+          <div class="hero__portrait-wrap">
+            <img src="assets/images/placeholder.jpg" alt="Portrait of Esther Adekanmbi" class="hero__portrait" loading="eager" />
+            <div class="hero__portrait-ring" aria-hidden="true"></div>
+          </div>
+          <!-- Animated Dashboard -->
+          <div class="dashboard" aria-label="Analytics dashboard preview" role="img">
+            <div class="dashboard__card dashboard__card--kpi">
+              <div class="dashboard__label">Total Revenue</div>
+              <div class="dashboard__value">$2.4M</div>
+              <div class="dashboard__delta dashboard__delta--up">+18.2%</div>
+              <div class="dashboard__sparkline">
+                <svg viewBox="0 0 80 28" fill="none" aria-hidden="true">
+                  <polyline points="0,22 12,18 24,20 36,10 48,14 60,6 72,8 80,4" stroke="#2563EB" stroke-width="2" fill="none"/>
+                  <polyline points="0,22 12,18 24,20 36,10 48,14 60,6 72,8 80,4 80,28 0,28" fill="rgba(37,99,235,0.1)"/>
+                </svg>
               </div>
             </div>
-
-            <div class="skill-card animate-on-scroll">
-              <div class="skill-header">
-                <div class="skill-icon soft" aria-hidden="true">🎯</div>
-                <div>
-                  <h3 class="skill-name">Attention to Detail</h3>
-                  <p class="skill-level">Strong</p>
-                </div>
-                <span class="skill-pct">92%</span>
-              </div>
-              <div class="skill-bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" aria-label="Attention to Detail 92%">
-                <div class="skill-fill" data-width="92"></div>
+            <div class="dashboard__card dashboard__card--chart">
+              <div class="dashboard__label">Monthly Analysis</div>
+              <div class="dashboard__bars" aria-hidden="true">
+                <div class="dashboard__bar" style="--h:45%"></div>
+                <div class="dashboard__bar" style="--h:72%"></div>
+                <div class="dashboard__bar" style="--h:58%"></div>
+                <div class="dashboard__bar" style="--h:88%"></div>
+                <div class="dashboard__bar" style="--h:64%"></div>
+                <div class="dashboard__bar dashboard__bar--active" style="--h:95%"></div>
+                <div class="dashboard__bar" style="--h:76%"></div>
               </div>
             </div>
-
-            <div class="skill-card animate-on-scroll">
-              <div class="skill-header">
-                <div class="skill-icon soft" aria-hidden="true">🔄</div>
-                <div>
-                  <h3 class="skill-name">Adaptability</h3>
-                  <p class="skill-level">Strong</p>
-                </div>
-                <span class="skill-pct">88%</span>
-              </div>
-              <div class="skill-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" aria-label="Adaptability 88%">
-                <div class="skill-fill" data-width="88"></div>
+            <div class="dashboard__card dashboard__card--metric">
+              <div class="dashboard__label">Accuracy Rate</div>
+              <div class="dashboard__ring" aria-hidden="true">
+                <svg viewBox="0 0 60 60">
+                  <circle cx="30" cy="30" r="24" stroke="#E5E7EB" stroke-width="4" fill="none"/>
+                  <circle cx="30" cy="30" r="24" stroke="#2563EB" stroke-width="4" fill="none"
+                    stroke-dasharray="150.8" stroke-dashoffset="18.1" stroke-linecap="round" transform="rotate(-90 30 30)"/>
+                </svg>
+                <span class="dashboard__ring-label">88%</span>
               </div>
             </div>
-
-            <div class="skill-card animate-on-scroll">
-              <div class="skill-header">
-                <div class="skill-icon soft" aria-hidden="true">🤝</div>
-                <div>
-                  <h3 class="skill-name">Teamwork</h3>
-                  <p class="skill-level">Strong</p>
-                </div>
-                <span class="skill-pct">87%</span>
-              </div>
-              <div class="skill-bar" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100" aria-label="Teamwork 87%">
-                <div class="skill-fill" data-width="87"></div>
+            <div class="dashboard__card dashboard__card--table">
+              <div class="dashboard__label">Top Segments</div>
+              <div class="dashboard__rows" aria-hidden="true">
+                <div class="dashboard__row"><span>Finance</span><span class="dashboard__pill">High</span></div>
+                <div class="dashboard__row"><span>Healthcare</span><span class="dashboard__pill dashboard__pill--mid">Mid</span></div>
+                <div class="dashboard__row"><span>Retail</span><span class="dashboard__pill">High</span></div>
               </div>
             </div>
-
-            <div class="skill-card animate-on-scroll">
-              <div class="skill-header">
-                <div class="skill-icon soft" aria-hidden="true">📚</div>
-                <div>
-                  <h3 class="skill-name">Self-Learning</h3>
-                  <p class="skill-level">Exceptional</p>
-                </div>
-                <span class="skill-pct">95%</span>
-              </div>
-              <div class="skill-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" aria-label="Self-Learning 95%">
-                <div class="skill-fill" data-width="95"></div>
-              </div>
-            </div>
-
           </div>
         </div>
       </div>
+      <div class="hero__scroll" aria-hidden="true">
+        <div class="hero__scroll-line"></div>
+      </div>
     </section>
 
-    <!-- ===== FEATURED PROJECT SECTION ===== -->
-    <section id="featured" class="featured-section section" aria-labelledby="featured-heading">
+    <!-- ═══════════════════ ABOUT ═══════════════════ -->
+    <section class="about section" id="about" aria-labelledby="about-heading">
       <div class="container">
-        <div class="section-header animate-on-scroll">
-          <span class="section-tag">Deep Dive</span>
-          <h2 id="featured-heading" class="section-title">Featured <span class="gradient-text">Project</span></h2>
+        <div class="section__header reveal">
+          <span class="section__eyebrow">About</span>
+          <h2 class="section__title" id="about-heading">The story behind the data</h2>
         </div>
-
-        <div class="featured-card animate-on-scroll">
-          <div class="featured-badge">
-            <span>⭐ Featured</span>
-          </div>
-
-          <div class="featured-top">
-            <div>
-              <h3 class="featured-title">Corporate Blueprint Cohort 1 – Learner Performance Analysis</h3>
-              <p class="featured-subtitle">End-to-end data analytics project: from raw data to actionable insights</p>
-            </div>
-            <div class="featured-actions">
-              <a href="#" class="btn btn-primary" target="_blank" rel="noopener" aria-label="View this project on GitHub">
-                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-                View GitHub
-              </a>
-              <a href="#" class="btn btn-secondary" target="_blank" rel="noopener" aria-label="View live dashboard">
-                View Dashboard
-              </a>
-              <a href="#" class="btn btn-outline" download aria-label="Download project report">
-                Download Report
-              </a>
-            </div>
-          </div>
-
-          <!-- Image Placeholders -->
-          <div class="featured-images">
-            <div class="featured-image-wrapper">
-              <img src="assets/images/placeholder.jpg" alt="Project dashboard screenshot 1" loading="lazy" class="featured-img" />
-              <div class="featured-img-label">Overview Dashboard</div>
-            </div>
-            <div class="featured-image-wrapper">
-              <img src="assets/images/placeholder.jpg" alt="Project EDA charts screenshot" loading="lazy" class="featured-img" />
-              <div class="featured-img-label">Exploratory Analysis</div>
-            </div>
-            <div class="featured-image-wrapper">
-              <img src="assets/images/placeholder.jpg" alt="Project key insights screenshot" loading="lazy" class="featured-img" />
-              <div class="featured-img-label">Key Insights</div>
+        <div class="about__grid">
+          <div class="about__narrative reveal">
+            <p class="about__lead">
+              I discovered my passion for data during my first university statistics module — the moment a 
+              spreadsheet full of numbers became a clear business story, I was hooked.
+            </p>
+            <p>
+              As a Computer Science undergraduate, I combine technical rigor with analytical curiosity. 
+              I believe data is not just numbers — it is evidence that drives better decisions, reveals hidden 
+              patterns, and solves real problems.
+            </p>
+            <p>
+              My focus is on the full data journey: from raw, messy datasets to clean, structured models 
+              and compelling visual dashboards that any stakeholder can understand and act on.
+            </p>
+            <p>
+              I am actively seeking internship and entry-level opportunities where I can contribute to 
+              data-driven teams and continue building expertise in business intelligence and analytics.
+            </p>
+            <div class="about__cta">
+              <a href="#contact" class="btn btn--primary">Get in touch</a>
+              <a href="#project" class="btn btn--outline">See my work</a>
             </div>
           </div>
-
-          <!-- Accordion Sections -->
-          <div class="featured-accordion">
-            <details class="accordion-item" open>
-              <summary class="accordion-summary">
-                <span>📋 Overview</span>
-                <span class="accordion-icon" aria-hidden="true">▾</span>
-              </summary>
-              <div class="accordion-body">
-                <p>This end-to-end analytics project analyses learner performance data from the Corporate Blueprint Cohort 1 training programme. The goal was to evaluate learner engagement, completion rates, and performance metrics to help programme administrators make data-driven decisions about curriculum design and learner support.</p>
+          <div class="about__details reveal">
+            <div class="about__info-card">
+              <div class="about__info-section">
+                <h3 class="about__info-title">Education</h3>
+                <div class="about__edu">
+                  <div class="about__edu-degree">B.Sc. Computer Science</div>
+                  <div class="about__edu-school">Your University Name</div>
+                  <div class="about__edu-year">Expected Graduation: 2025</div>
+                </div>
               </div>
-            </details>
-
-            <details class="accordion-item">
-              <summary class="accordion-summary">
-                <span>🔍 Business Problem</span>
-                <span class="accordion-icon" aria-hidden="true">▾</span>
-              </summary>
-              <div class="accordion-body">
-                <p>The training coordinator needed answers to: <strong>Which learners are at risk of dropping out?</strong> Which modules have the lowest completion rates? What is the average score distribution across cohorts? How does engagement correlate with final scores? Without clear answers, resources were being misallocated and at-risk learners weren't getting early interventions.</p>
-              </div>
-            </details>
-
-            <details class="accordion-item">
-              <summary class="accordion-summary">
-                <span>🗂 Dataset Preparation</span>
-                <span class="accordion-icon" aria-hidden="true">▾</span>
-              </summary>
-              <div class="accordion-body">
-                <p>Raw data was provided in Excel format with 8,240 rows spanning learner IDs, module scores, attendance, assignment submissions, and final results. Data cleaning involved: removing 127 duplicate entries, handling 43 missing score values via median imputation, standardising date formats, and normalising inconsistent category labels (Pass/PASS/pass → Pass).</p>
-              </div>
-            </details>
-
-            <details class="accordion-item">
-              <summary class="accordion-summary">
-                <span>📈 Exploratory Analysis (EDA)</span>
-                <span class="accordion-icon" aria-hidden="true">▾</span>
-              </summary>
-              <div class="accordion-body">
-                <p>EDA was performed in both Excel (Pivot Tables, conditional formatting) and Python (Pandas, Matplotlib). Key analyses included score distribution histograms, correlation heatmaps between attendance and final scores, module-level completion rate comparisons, and learner segmentation by performance quartile.</p>
-              </div>
-            </details>
-
-            <details class="accordion-item">
-              <summary class="accordion-summary">
-                <span>📊 Power BI Dashboard</span>
-                <span class="accordion-icon" aria-hidden="true">▾</span>
-              </summary>
-              <div class="accordion-body">
-                <p>An interactive Power BI dashboard was built with 4 report pages: Executive Summary (KPI cards, trend lines), Module Performance (bar + waterfall charts), Learner Risk Analysis (scatter plots, conditional highlighting), and Score Distribution (histograms, quartile breakdown). DAX measures were written for completion rate, pass/fail ratio, and average weighted score.</p>
-              </div>
-            </details>
-
-            <details class="accordion-item">
-              <summary class="accordion-summary">
-                <span>💡 Key Insights</span>
-                <span class="accordion-icon" aria-hidden="true">▾</span>
-              </summary>
-              <div class="accordion-body">
-                <ul class="insights-list">
-                  <li>Module 3 had the lowest completion rate (61%) — content complexity likely too high for early-stage learners</li>
-                  <li>Learners with attendance below 70% had a 3x higher risk of failing the final assessment</li>
-                  <li>Top 25% of learners completed assignments 48 hours ahead of deadlines on average</li>
-                  <li>Overall cohort pass rate was 78.4%, exceeding the 75% programme target</li>
-                  <li>Three learner clusters identified: High-performers, At-risk, and Disengaged — enabling targeted support</li>
+              <div class="about__info-section">
+                <h3 class="about__info-title">Focus Areas</h3>
+                <ul class="about__focus" role="list">
+                  <li>Data Analysis &amp; Visualization</li>
+                  <li>Business Intelligence</li>
+                  <li>Statistical Modelling</li>
+                  <li>Dashboard Development</li>
                 </ul>
               </div>
-            </details>
-
-            <details class="accordion-item">
-              <summary class="accordion-summary">
-                <span>🛠 Skills Demonstrated</span>
-                <span class="accordion-icon" aria-hidden="true">▾</span>
-              </summary>
-              <div class="accordion-body">
-                <div class="skills-badges">
-                  <span class="tech-badge excel">Excel</span>
-                  <span class="tech-badge powerbi">Power BI</span>
-                  <span class="tech-badge python">Python</span>
-                  <span class="tech-badge sql">SQL</span>
-                  <span class="tech-badge data">Data Cleaning</span>
-                  <span class="tech-badge data">EDA</span>
-                  <span class="tech-badge viz">DAX</span>
-                  <span class="tech-badge viz">Storytelling</span>
+              <div class="about__info-section">
+                <h3 class="about__info-title">Seeking</h3>
+                <div class="about__seeking">
+                  <span class="tag">Data Analyst Internship</span>
+                  <span class="tag">BI Analyst Role</span>
+                  <span class="tag">Graduate Positions</span>
                 </div>
               </div>
-            </details>
+              <div class="about__info-section">
+                <h3 class="about__info-title">Location</h3>
+                <p>Nigeria · Open to Remote &amp; Relocation</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== PROJECTS GALLERY SECTION ===== -->
-    <section id="projects" class="projects-section section" aria-labelledby="projects-heading">
+    <!-- ═══════════════════ SKILLS ═══════════════════ -->
+    <section class="skills section section--alt" id="skills" aria-labelledby="skills-heading">
       <div class="container">
-        <div class="section-header animate-on-scroll">
-          <span class="section-tag">My Work</span>
-          <h2 id="projects-heading" class="section-title">Project <span class="gradient-text">Gallery</span></h2>
-          <p class="section-subtitle">Hands-on projects built to solve real business problems</p>
+        <div class="section__header reveal">
+          <span class="section__eyebrow">Capabilities</span>
+          <h2 class="section__title" id="skills-heading">Tools &amp; technologies</h2>
+          <p class="section__subtitle">A curated toolkit built through hands-on projects, structured learning, and real data challenges.</p>
         </div>
 
-        <!-- Filter Buttons -->
-        <div class="filter-buttons" role="group" aria-label="Filter projects by technology">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="excel">Excel</button>
+        <div class="skills__tabs reveal" role="tablist" aria-label="Skill categories">
+          <button class="skills__tab skills__tab--active" role="tab" aria-selected="true" data-tab="analytics" aria-controls="tab-analytics">Analytics</button>
+          <button class="skills__tab" role="tab" aria-selected="false" data-tab="programming" aria-controls="tab-programming">Programming</button>
+          <button class="skills__tab" role="tab" aria-selected="false" data-tab="visualization" aria-controls="tab-visualization">Visualization</button>
+          <button class="skills__tab" role="tab" aria-selected="false" data-tab="methods" aria-controls="tab-methods">Methods</button>
+        </div>
+
+        <div class="skills__panels">
+          <div class="skills__panel skills__panel--active" id="tab-analytics" role="tabpanel" aria-label="Analytics tools">
+            <div class="skills__grid">
+              <div class="skill-card reveal">
+                <div class="skill-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="8" fill="#E8F0FE"/><rect x="8" y="18" width="5" height="14" rx="2" fill="#2563EB"/><rect x="17" y="12" width="5" height="20" rx="2" fill="#2563EB" opacity=".7"/><rect x="26" y="8" width="5" height="24" rx="2" fill="#2563EB" opacity=".4"/></svg>
+                </div>
+                <h3 class="skill-card__name">Microsoft Excel</h3>
+                <p class="skill-card__desc">Pivot tables, advanced formulas, Power Query, data modelling, and dashboard reporting.</p>
+                <div class="skill-card__tags"><span class="tag">VLOOKUP</span><span class="tag">Pivot Tables</span><span class="tag">Power Query</span></div>
+              </div>
+              <div class="skill-card reveal">
+                <div class="skill-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="8" fill="#EEF2FF"/><path d="M10 20h20M20 10v20M12 12l16 16M12 28l16-16" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" opacity=".4"/><circle cx="20" cy="20" r="6" stroke="#2563EB" stroke-width="2.5" fill="none"/></svg>
+                </div>
+                <h3 class="skill-card__name">SQL</h3>
+                <p class="skill-card__desc">Complex queries, joins, CTEs, window functions, subqueries, and database management.</p>
+                <div class="skill-card__tags"><span class="tag">MySQL</span><span class="tag">PostgreSQL</span><span class="tag">CTEs</span></div>
+              </div>
+              <div class="skill-card reveal">
+                <div class="skill-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="8" fill="#F0F9FF"/><path d="M8 32V16l12-8 12 8v16" stroke="#0EA5E9" stroke-width="2" fill="none"/><rect x="14" y="20" width="5" height="12" rx="1" fill="#0EA5E9" opacity=".7"/><rect x="21" y="16" width="5" height="16" rx="1" fill="#0EA5E9"/></svg>
+                </div>
+                <h3 class="skill-card__name">Power Query</h3>
+                <p class="skill-card__desc">ETL pipelines, data transformation, M language, and automated data refresh workflows.</p>
+                <div class="skill-card__tags"><span class="tag">ETL</span><span class="tag">M Language</span><span class="tag">Transform</span></div>
+              </div>
+              <div class="skill-card reveal">
+                <div class="skill-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="8" fill="#F0FFF4"/><path d="M20 10a10 10 0 110 20A10 10 0 0120 10z" stroke="#22C55E" stroke-width="2" fill="none"/><path d="M14 20h12M20 14v12" stroke="#22C55E" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <h3 class="skill-card__name">Statistics</h3>
+                <p class="skill-card__desc">Descriptive and inferential statistics, hypothesis testing, correlation, and regression analysis.</p>
+                <div class="skill-card__tags"><span class="tag">Regression</span><span class="tag">Hypothesis</span><span class="tag">Correlation</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skills__panel" id="tab-programming" role="tabpanel" aria-label="Programming skills" hidden>
+            <div class="skills__grid">
+              <div class="skill-card reveal">
+                <div class="skill-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="8" fill="#FFFBEB"/><path d="M14 12l-6 8 6 8M26 12l6 8-6 8" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="21" y1="10" x2="19" y2="30" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/></svg>
+                </div>
+                <h3 class="skill-card__name">Python</h3>
+                <p class="skill-card__desc">Data analysis scripts, automation, EDA pipelines, and working with data-focused libraries.</p>
+                <div class="skill-card__tags"><span class="tag">Python 3</span><span class="tag">Scripting</span><span class="tag">EDA</span></div>
+              </div>
+              <div class="skill-card reveal">
+                <div class="skill-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="8" fill="#EEF2FF"/><rect x="10" y="14" width="20" height="3" rx="1.5" fill="#2563EB"/><rect x="10" y="20" width="14" height="3" rx="1.5" fill="#2563EB" opacity=".7"/><rect x="10" y="26" width="17" height="3" rx="1.5" fill="#2563EB" opacity=".4"/></svg>
+                </div>
+                <h3 class="skill-card__name">Pandas</h3>
+                <p class="skill-card__desc">DataFrame manipulation, data wrangling, merging, grouping, and exploratory data analysis.</p>
+                <div class="skill-card__tags"><span class="tag">DataFrames</span><span class="tag">GroupBy</span><span class="tag">Merge</span></div>
+              </div>
+              <div class="skill-card reveal">
+                <div class="skill-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="8" fill="#F0FFF4"/><path d="M12 28l6-10 4 6 3-4 4 8" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h3 class="skill-card__name">NumPy</h3>
+                <p class="skill-card__desc">Numerical computation, array operations, mathematical functions, and statistical analysis.</p>
+                <div class="skill-card__tags"><span class="tag">Arrays</span><span class="tag">Linear Algebra</span><span class="tag">Numerical</span></div>
+              </div>
+              <div class="skill-card reveal">
+                <div class="skill-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="8" fill="#FFF0F0"/><circle cx="20" cy="20" r="10" stroke="#EF4444" stroke-width="2" fill="none"/><path d="M20 14v6l4 3" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"/></svg>
+                </div>
+                <h3 class="skill-card__name">Data Cleaning</h3>
+                <p class="skill-card__desc">Handling missing values, deduplication, standardisation, outlier detection, and validation.</p>
+                <div class="skill-card__tags"><span class="tag">Missing Values</span><span class="tag">Outliers</span><span class="tag">Validation</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skills__panel" id="tab-visualization" role="tabpanel" aria-label="Visualization tools" hidden>
+            <div class="skills__grid">
+              <div class="skill-card reveal">
+                <div class="skill-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="8" fill="#EEF2FF"/><rect x="8" y="20" width="6" height="12" rx="2" fill="#2563EB" opacity=".5"/><rect x="17" y="14" width="6" height="18" rx="2" fill="#2563EB" opacity=".7"/><rect x="26" y="8" width="6" height="24" rx="2" fill="#2563EB"/></svg>
+                </div>
+                <h3 class="skill-card__name">Power BI</h3>
+                <p class="skill-card__desc">Interactive dashboards, DAX formulas, report design, data modelling, and business intelligence.</p>
+                <div class="skill-card__tags"><span class="tag">DAX</span><span class="tag">Reports</span><span class="tag">Data Model</span></div>
+              </div>
+              <div class="skill-card reveal">
+                <div class="skill-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="8" fill="#FFF7ED"/><path d="M8 28c4-8 6-4 10-10 4 6 6 2 10 2" stroke="#F97316" stroke-width="2.5" stroke-linecap="round"/><path d="M8 22c4-6 6-2 10-6 4 4 6 1 10 3" stroke="#F97316" stroke-width="2.5" stroke-linecap="round" opacity=".5"/></svg>
+                </div>
+                <h3 class="skill-card__name">DAX</h3>
+                <p class="skill-card__desc">Calculated columns, measures, time intelligence, filter context, and KPI formulas in Power BI.</p>
+                <div class="skill-card__tags"><span class="tag">Measures</span><span class="tag">KPIs</span><span class="tag">Time Intel</span></div>
+              </div>
+              <div class="skill-card reveal">
+                <div class="skill-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="8" fill="#F0FFF4"/><circle cx="20" cy="20" r="10" fill="none" stroke="#22C55E" stroke-width="2"/><path d="M20 20l-8-4M20 20l4 9M20 20l10-2" stroke="#22C55E" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <h3 class="skill-card__name">Data Visualization</h3>
+                <p class="skill-card__desc">Choosing the right chart, storytelling with data, visual hierarchy, and dashboard layout principles.</p>
+                <div class="skill-card__tags"><span class="tag">Charts</span><span class="tag">Storytelling</span><span class="tag">Layout</span></div>
+              </div>
+              <div class="skill-card reveal">
+                <div class="skill-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="8" fill="#F0F9FF"/><path d="M10 10h20v20H10z" stroke="#0EA5E9" stroke-width="2" fill="none"/><path d="M10 18h20M18 10v20" stroke="#0EA5E9" stroke-width="2" opacity=".5"/></svg>
+                </div>
+                <h3 class="skill-card__name">Business Intelligence</h3>
+                <p class="skill-card__desc">KPI frameworks, report distribution, data-driven decision support, and executive summaries.</p>
+                <div class="skill-card__tags"><span class="tag">KPIs</span><span class="tag">Reports</span><span class="tag">Insights</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skills__panel" id="tab-methods" role="tabpanel" aria-label="Analytical methods" hidden>
+            <div class="skills__grid">
+              <div class="skill-card reveal">
+                <div class="skill-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="8" fill="#EEF2FF"/><path d="M10 30L20 10l10 20" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="13" y1="24" x2="27" y2="24" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" opacity=".5"/></svg>
+                </div>
+                <h3 class="skill-card__name">Exploratory Data Analysis</h3>
+                <p class="skill-card__desc">Systematic investigation of datasets to summarise characteristics and uncover patterns before modelling.</p>
+                <div class="skill-card__tags"><span class="tag">EDA</span><span class="tag">Profiling</span><span class="tag">Patterns</span></div>
+              </div>
+              <div class="skill-card reveal">
+                <div class="skill-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="8" fill="#F0FFF4"/><rect x="8" y="8" width="10" height="10" rx="2" fill="#22C55E" opacity=".5"/><rect x="22" y="8" width="10" height="10" rx="2" fill="#22C55E"/><rect x="8" y="22" width="10" height="10" rx="2" fill="#22C55E"/><rect x="22" y="22" width="10" height="10" rx="2" fill="#22C55E" opacity=".5"/></svg>
+                </div>
+                <h3 class="skill-card__name">Data Storytelling</h3>
+                <p class="skill-card__desc">Communicating insights clearly to non-technical audiences using narrative structure and visual context.</p>
+                <div class="skill-card__tags"><span class="tag">Narrative</span><span class="tag">Context</span><span class="tag">Clarity</span></div>
+              </div>
+              <div class="skill-card reveal">
+                <div class="skill-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="8" fill="#FFF0F0"/><path d="M12 28V18M20 28V12M28 28V22" stroke="#EF4444" stroke-width="3" stroke-linecap="round"/></svg>
+                </div>
+                <h3 class="skill-card__name">Reporting &amp; Dashboards</h3>
+                <p class="skill-card__desc">Designing clear, interactive executive dashboards with drill-down capability and automated refresh.</p>
+                <div class="skill-card__tags"><span class="tag">Dashboards</span><span class="tag">Executive</span><span class="tag">Automated</span></div>
+              </div>
+              <div class="skill-card reveal">
+                <div class="skill-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="8" fill="#FFFBEB"/><path d="M20 10l3 7h7l-6 4 2 7-6-4-6 4 2-7-6-4h7z" stroke="#F59E0B" stroke-width="2" fill="none" stroke-linejoin="round"/></svg>
+                </div>
+                <h3 class="skill-card__name">Problem-Solving</h3>
+                <p class="skill-card__desc">Framing business questions as analytical problems, then translating findings into clear recommendations.</p>
+                <div class="skill-card__tags"><span class="tag">Analysis</span><span class="tag">Insight</span><span class="tag">Strategy</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ CASE STUDY ═══════════════════ -->
+    <section class="project section" id="project" aria-labelledby="project-heading">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__eyebrow">Featured Case Study</span>
+          <h2 class="section__title" id="project-heading">Corporate Blueprint Cohort 1<br />Learner Performance Analysis</h2>
+          <p class="section__subtitle">An end-to-end analytical investigation into learner engagement, performance drivers, and programme effectiveness.</p>
+        </div>
+
+        <div class="case-study">
+          <!-- Overview strip -->
+          <div class="case-study__meta reveal">
+            <div class="case-study__meta-item">
+              <span class="case-study__meta-label">Tools Used</span>
+              <span class="case-study__meta-value">Excel · SQL · Power BI</span>
+            </div>
+            <div class="case-study__meta-item">
+              <span class="case-study__meta-label">Dataset Size</span>
+              <span class="case-study__meta-value">500+ Learner Records</span>
+            </div>
+            <div class="case-study__meta-item">
+              <span class="case-study__meta-label">Project Type</span>
+              <span class="case-study__meta-value">Business Intelligence</span>
+            </div>
+            <div class="case-study__meta-item">
+              <span class="case-study__meta-label">Domain</span>
+              <span class="case-study__meta-value">EdTech · HR Analytics</span>
+            </div>
+          </div>
+
+          <!-- Step cards -->
+          <div class="case-study__steps">
+            <div class="case-study__step reveal">
+              <div class="case-study__step-num" aria-hidden="true">01</div>
+              <div class="case-study__step-body">
+                <h3>Business Problem</h3>
+                <p>The Corporate Blueprint programme needed visibility into which learners were at risk of dropping out, which modules had the highest disengagement, and what factors predicted completion — enabling programme managers to intervene early.</p>
+              </div>
+            </div>
+            <div class="case-study__step reveal">
+              <div class="case-study__step-num" aria-hidden="true">02</div>
+              <div class="case-study__step-body">
+                <h3>Dataset &amp; Sources</h3>
+                <p>Cohort enrolment records, module assessment scores, attendance logs, assignment submission timestamps, and facilitator feedback — consolidated across multiple Excel sheets into a unified data model.</p>
+              </div>
+            </div>
+            <div class="case-study__step reveal">
+              <div class="case-study__step-num" aria-hidden="true">03</div>
+              <div class="case-study__step-body">
+                <h3>Data Cleaning Process</h3>
+                <p>Removed 47 duplicate entries, standardised date formats across three source files, handled 12% missing assessment scores using median imputation per cohort group, and validated referential integrity between learner IDs and submission records.</p>
+              </div>
+            </div>
+            <div class="case-study__step reveal">
+              <div class="case-study__step-num" aria-hidden="true">04</div>
+              <div class="case-study__step-body">
+                <h3>Analysis Methodology</h3>
+                <p>Segmented learners by performance quartile, applied attendance frequency analysis, calculated module completion rates, and used correlation analysis to identify the top predictors of programme success — including early assignment submission and peer session attendance.</p>
+              </div>
+            </div>
+            <div class="case-study__step reveal">
+              <div class="case-study__step-num" aria-hidden="true">05</div>
+              <div class="case-study__step-body">
+                <h3>Key Insights</h3>
+                <ul class="case-study__insights">
+                  <li>Learners who submitted assignments within 48 hours of release were <strong>3.2× more likely to complete</strong> the programme.</li>
+                  <li>Module 3 had the highest drop-off rate at <strong>28%</strong> — coinciding with the highest cognitive load week.</li>
+                  <li>Peer-led session attendees outperformed non-attendees by an average of <strong>22 percentage points</strong>.</li>
+                  <li><strong>61% of at-risk learners</strong> could be identified by Week 2 using only 3 behavioural signals.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="case-study__step reveal">
+              <div class="case-study__step-num" aria-hidden="true">06</div>
+              <div class="case-study__step-body">
+                <h3>Recommendations</h3>
+                <ul class="case-study__insights">
+                  <li>Deploy an early-warning system triggering facilitator outreach when a learner misses Week 2 signals.</li>
+                  <li>Restructure Module 3 to reduce cognitive overload by splitting content into two shorter segments.</li>
+                  <li>Increase incentives for peer-session attendance through certification recognition.</li>
+                  <li>Introduce an automated weekly dashboard visible to both learners and programme managers.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dashboard preview placeholder -->
+          <div class="case-study__dashboard reveal">
+            <div class="case-study__dashboard-header">
+              <span class="case-study__dashboard-title">Learner Performance Dashboard</span>
+              <span class="case-study__dashboard-badge">Power BI</span>
+            </div>
+            <div class="case-study__dashboard-preview" aria-label="Dashboard preview placeholder">
+              <div class="dashboard-mock">
+                <div class="dashboard-mock__kpis">
+                  <div class="dashboard-mock__kpi"><div class="dashboard-mock__kpi-num">87%</div><div class="dashboard-mock__kpi-lbl">Completion Rate</div></div>
+                  <div class="dashboard-mock__kpi"><div class="dashboard-mock__kpi-num">500+</div><div class="dashboard-mock__kpi-lbl">Learners</div></div>
+                  <div class="dashboard-mock__kpi"><div class="dashboard-mock__kpi-num">22pt</div><div class="dashboard-mock__kpi-lbl">Avg Score Gap</div></div>
+                  <div class="dashboard-mock__kpi"><div class="dashboard-mock__kpi-num">61%</div><div class="dashboard-mock__kpi-lbl">Risk Detectable</div></div>
+                </div>
+                <div class="dashboard-mock__charts">
+                  <div class="dashboard-mock__chart">
+                    <div class="dashboard-mock__chart-label">Completion by Module</div>
+                    <div class="dashboard-mock__hbars">
+                      <div class="dashboard-mock__hbar"><span>Module 1</span><div class="dashboard-mock__hbar-track"><div class="dashboard-mock__hbar-fill" style="--w:92%"></div></div><span>92%</span></div>
+                      <div class="dashboard-mock__hbar"><span>Module 2</span><div class="dashboard-mock__hbar-track"><div class="dashboard-mock__hbar-fill" style="--w:85%"></div></div><span>85%</span></div>
+                      <div class="dashboard-mock__hbar"><span>Module 3</span><div class="dashboard-mock__hbar-track"><div class="dashboard-mock__hbar-fill" style="--w:72%"></div></div><span>72%</span></div>
+                      <div class="dashboard-mock__hbar"><span>Module 4</span><div class="dashboard-mock__hbar-track"><div class="dashboard-mock__hbar-fill" style="--w:88%"></div></div><span>88%</span></div>
+                    </div>
+                  </div>
+                  <div class="dashboard-mock__chart">
+                    <div class="dashboard-mock__chart-label">Performance Distribution</div>
+                    <div class="dashboard-mock__dist">
+                      <div class="dashboard-mock__bar-group">
+                        <div class="dashboard-mock__dist-bar" style="--h:40%"></div><div class="dashboard-mock__dist-lbl">Below 50</div>
+                      </div>
+                      <div class="dashboard-mock__bar-group">
+                        <div class="dashboard-mock__dist-bar" style="--h:65%"></div><div class="dashboard-mock__dist-lbl">50–65</div>
+                      </div>
+                      <div class="dashboard-mock__bar-group">
+                        <div class="dashboard-mock__dist-bar dashboard-mock__dist-bar--hi" style="--h:90%"></div><div class="dashboard-mock__dist-lbl">65–80</div>
+                      </div>
+                      <div class="dashboard-mock__bar-group">
+                        <div class="dashboard-mock__dist-bar" style="--h:72%"></div><div class="dashboard-mock__dist-lbl">80+</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="case-study__actions">
+              <a href="#" class="btn btn--primary" aria-label="View project on GitHub">
+                View on GitHub
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+              <a href="#" class="btn btn--outline" aria-label="View live project demo">Live Demo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ PROJECT GALLERY ═══════════════════ -->
+    <section class="gallery section section--alt" id="gallery" aria-labelledby="gallery-heading">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__eyebrow">Projects</span>
+          <h2 class="section__title" id="gallery-heading">All projects</h2>
+          <p class="section__subtitle">A selection of analytical projects demonstrating depth across different domains and tools.</p>
+        </div>
+
+        <div class="gallery__filters reveal" role="group" aria-label="Filter projects">
+          <button class="filter-btn filter-btn--active" data-filter="all">All</button>
           <button class="filter-btn" data-filter="sql">SQL</button>
+          <button class="filter-btn" data-filter="excel">Excel</button>
           <button class="filter-btn" data-filter="powerbi">Power BI</button>
           <button class="filter-btn" data-filter="python">Python</button>
         </div>
 
-        <!-- Projects Grid -->
-        <div class="projects-grid" id="projects-grid" aria-live="polite" aria-label="Filtered projects">
-
-          <article class="project-card animate-on-scroll" data-category="excel powerbi" aria-label="Sales Performance Dashboard project">
-            <div class="project-img-wrapper">
-              <img src="assets/images/placeholder.jpg" alt="Sales Performance Dashboard screenshot" loading="lazy" class="project-img" />
-              <div class="project-overlay">
-                <a href="#" class="btn btn-primary btn-sm" target="_blank" rel="noopener" aria-label="View Sales Performance Dashboard project">View Project</a>
-              </div>
+        <div class="gallery__grid" id="projectGrid">
+          <article class="project-card reveal" data-category="sql excel powerbi" aria-label="Corporate Blueprint project">
+            <div class="project-card__image">
+              <img src="assets/images/project-1.jpg" alt="Corporate Blueprint Learner Performance Dashboard" loading="lazy" />
+              <div class="project-card__overlay" aria-hidden="true"></div>
             </div>
-            <div class="project-body">
-              <h3 class="project-title">Sales Performance Dashboard</h3>
-              <p class="project-desc">Interactive Excel dashboard tracking monthly revenue, regional targets, and top-performing products with drill-down capability.</p>
-              <div class="project-tags" aria-label="Technologies used">
-                <span class="tech-badge excel">Excel</span>
-                <span class="tech-badge powerbi">Power BI</span>
+            <div class="project-card__body">
+              <div class="project-card__tags">
+                <span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag">Excel</span>
               </div>
-            </div>
-          </article>
-
-          <article class="project-card animate-on-scroll" data-category="sql" aria-label="E-Commerce Database Analysis project">
-            <div class="project-img-wrapper">
-              <img src="assets/images/placeholder.jpg" alt="E-Commerce Database Analysis screenshot" loading="lazy" class="project-img" />
-              <div class="project-overlay">
-                <a href="#" class="btn btn-primary btn-sm" target="_blank" rel="noopener" aria-label="View E-Commerce Database Analysis project">View Project</a>
-              </div>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">E-Commerce Database Analysis</h3>
-              <p class="project-desc">SQL queries to extract customer lifetime value, order trends, and product category performance from a relational database.</p>
-              <div class="project-tags" aria-label="Technologies used">
-                <span class="tech-badge sql">SQL</span>
+              <h3 class="project-card__title">Corporate Blueprint — Learner Performance</h3>
+              <p class="project-card__desc">End-to-end cohort analysis identifying at-risk learners and optimising programme structure using behavioural data signals.</p>
+              <div class="project-card__footer">
+                <a href="#project" class="project-card__link" aria-label="Read full case study">Read Case Study →</a>
+                <a href="#" class="project-card__github" aria-label="View on GitHub">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                </a>
               </div>
             </div>
           </article>
 
-          <article class="project-card animate-on-scroll" data-category="powerbi" aria-label="HR Analytics Dashboard project">
-            <div class="project-img-wrapper">
-              <img src="assets/images/placeholder.jpg" alt="HR Analytics Dashboard screenshot" loading="lazy" class="project-img" />
-              <div class="project-overlay">
-                <a href="#" class="btn btn-primary btn-sm" target="_blank" rel="noopener" aria-label="View HR Analytics Dashboard project">View Project</a>
-              </div>
+          <article class="project-card reveal" data-category="sql" aria-label="Sales database project">
+            <div class="project-card__image">
+              <img src="assets/images/project-2.jpg" alt="Sales Performance SQL Analysis" loading="lazy" />
+              <div class="project-card__overlay" aria-hidden="true"></div>
             </div>
-            <div class="project-body">
-              <h3 class="project-title">HR Analytics Dashboard</h3>
-              <p class="project-desc">Power BI dashboard visualising employee attrition, department headcount, satisfaction scores, and tenure analysis.</p>
-              <div class="project-tags" aria-label="Technologies used">
-                <span class="tech-badge powerbi">Power BI</span>
+            <div class="project-card__body">
+              <div class="project-card__tags">
+                <span class="tag">SQL</span><span class="tag">MySQL</span>
               </div>
-            </div>
-          </article>
-
-          <article class="project-card animate-on-scroll" data-category="python excel" aria-label="Student Grade Analysis project">
-            <div class="project-img-wrapper">
-              <img src="assets/images/placeholder.jpg" alt="Student Grade Analysis screenshot" loading="lazy" class="project-img" />
-              <div class="project-overlay">
-                <a href="#" class="btn btn-primary btn-sm" target="_blank" rel="noopener" aria-label="View Student Grade Analysis project">View Project</a>
-              </div>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">Student Grade Analysis</h3>
-              <p class="project-desc">Python (Pandas + Matplotlib) analysis of student performance data — identifying grade distributions and at-risk student patterns.</p>
-              <div class="project-tags" aria-label="Technologies used">
-                <span class="tech-badge python">Python</span>
-                <span class="tech-badge excel">Excel</span>
+              <h3 class="project-card__title">Sales Performance — SQL Database Analysis</h3>
+              <p class="project-card__desc">Multi-table relational database analysis using advanced CTEs and window functions to surface top-performing products and regional trends.</p>
+              <div class="project-card__footer">
+                <a href="#" class="project-card__link" aria-label="View project details">View Project →</a>
+                <a href="#" class="project-card__github" aria-label="View on GitHub">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                </a>
               </div>
             </div>
           </article>
 
-          <article class="project-card animate-on-scroll" data-category="excel" aria-label="Budget Tracker Spreadsheet project">
-            <div class="project-img-wrapper">
-              <img src="assets/images/placeholder.jpg" alt="Budget Tracker screenshot" loading="lazy" class="project-img" />
-              <div class="project-overlay">
-                <a href="#" class="btn btn-primary btn-sm" target="_blank" rel="noopener" aria-label="View Budget Tracker project">View Project</a>
-              </div>
+          <article class="project-card reveal" data-category="excel powerbi" aria-label="HR analytics project">
+            <div class="project-card__image">
+              <img src="assets/images/project-3.jpg" alt="HR Analytics Dashboard" loading="lazy" />
+              <div class="project-card__overlay" aria-hidden="true"></div>
             </div>
-            <div class="project-body">
-              <h3 class="project-title">Personal Budget Tracker</h3>
-              <p class="project-desc">Automated Excel budget tracker with dynamic charts, category breakdowns, and monthly savings summaries using formulas and Power Query.</p>
-              <div class="project-tags" aria-label="Technologies used">
-                <span class="tech-badge excel">Excel</span>
+            <div class="project-card__body">
+              <div class="project-card__tags">
+                <span class="tag">Excel</span><span class="tag">Power BI</span><span class="tag">DAX</span>
               </div>
-            </div>
-          </article>
-
-          <article class="project-card animate-on-scroll" data-category="sql python" aria-label="Customer Segmentation Analysis project">
-            <div class="project-img-wrapper">
-              <img src="assets/images/placeholder.jpg" alt="Customer Segmentation screenshot" loading="lazy" class="project-img" />
-              <div class="project-overlay">
-                <a href="#" class="btn btn-primary btn-sm" target="_blank" rel="noopener" aria-label="View Customer Segmentation project">View Project</a>
-              </div>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">Customer Segmentation Analysis</h3>
-              <p class="project-desc">Combined SQL data extraction and Python clustering to segment 5,000+ customers by purchase behaviour and lifetime value.</p>
-              <div class="project-tags" aria-label="Technologies used">
-                <span class="tech-badge sql">SQL</span>
-                <span class="tech-badge python">Python</span>
+              <h3 class="project-card__title">HR Analytics — Attrition &amp; Retention Dashboard</h3>
+              <p class="project-card__desc">Interactive Power BI dashboard identifying attrition patterns by department, tenure, and salary band — enabling targeted HR interventions.</p>
+              <div class="project-card__footer">
+                <a href="#" class="project-card__link" aria-label="View project details">View Project →</a>
+                <a href="#" class="project-card__github" aria-label="View on GitHub">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                </a>
               </div>
             </div>
           </article>
 
-          <article class="project-card animate-on-scroll" data-category="powerbi excel" aria-label="Retail Inventory Dashboard project">
-            <div class="project-img-wrapper">
-              <img src="assets/images/placeholder.jpg" alt="Retail Inventory Dashboard screenshot" loading="lazy" class="project-img" />
-              <div class="project-overlay">
-                <a href="#" class="btn btn-primary btn-sm" target="_blank" rel="noopener" aria-label="View Retail Inventory Dashboard project">View Project</a>
-              </div>
+          <article class="project-card reveal" data-category="python" aria-label="Python EDA project">
+            <div class="project-card__image">
+              <img src="assets/images/project-4.jpg" alt="Python Exploratory Data Analysis" loading="lazy" />
+              <div class="project-card__overlay" aria-hidden="true"></div>
             </div>
-            <div class="project-body">
-              <h3 class="project-title">Retail Inventory Dashboard</h3>
-              <p class="project-desc">End-to-end inventory tracking solution combining Excel data prep with a Power BI dashboard showing stock levels, reorder alerts, and turnover rates.</p>
-              <div class="project-tags" aria-label="Technologies used">
-                <span class="tech-badge powerbi">Power BI</span>
-                <span class="tech-badge excel">Excel</span>
+            <div class="project-card__body">
+              <div class="project-card__tags">
+                <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">NumPy</span>
               </div>
-            </div>
-          </article>
-
-          <article class="project-card animate-on-scroll" data-category="python" aria-label="COVID-19 Data Exploration project">
-            <div class="project-img-wrapper">
-              <img src="assets/images/placeholder.jpg" alt="COVID-19 Data Exploration screenshot" loading="lazy" class="project-img" />
-              <div class="project-overlay">
-                <a href="#" class="btn btn-primary btn-sm" target="_blank" rel="noopener" aria-label="View COVID-19 Data Exploration project">View Project</a>
-              </div>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">COVID-19 Data Exploration</h3>
-              <p class="project-desc">Python EDA of global COVID-19 datasets exploring case trends, vaccination rates, and mortality correlations across regions using Pandas and Seaborn.</p>
-              <div class="project-tags" aria-label="Technologies used">
-                <span class="tech-badge python">Python</span>
+              <h3 class="project-card__title">E-commerce EDA — Customer Behaviour Analysis</h3>
+              <p class="project-card__desc">Python-based exploratory analysis of 10,000+ customer transactions to identify purchase patterns, seasonal trends, and segment behaviour.</p>
+              <div class="project-card__footer">
+                <a href="#" class="project-card__link" aria-label="View project details">View Project →</a>
+                <a href="#" class="project-card__github" aria-label="View on GitHub">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                </a>
               </div>
             </div>
           </article>
 
+          <article class="project-card reveal" data-category="excel sql" aria-label="Financial analysis project">
+            <div class="project-card__image">
+              <img src="assets/images/project-5.jpg" alt="Financial Data Analysis" loading="lazy" />
+              <div class="project-card__overlay" aria-hidden="true"></div>
+            </div>
+            <div class="project-card__body">
+              <div class="project-card__tags">
+                <span class="tag">Excel</span><span class="tag">SQL</span>
+              </div>
+              <h3 class="project-card__title">Financial Analysis — Budget vs. Actuals Report</h3>
+              <p class="project-card__desc">Variance analysis across 12 departments tracking budget adherence, cost overruns, and savings opportunities with automated monthly refresh.</p>
+              <div class="project-card__footer">
+                <a href="#" class="project-card__link" aria-label="View project details">View Project →</a>
+                <a href="#" class="project-card__github" aria-label="View on GitHub">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-category="powerbi python" aria-label="Supply chain project">
+            <div class="project-card__image">
+              <img src="assets/images/project-6.jpg" alt="Supply Chain Analysis Dashboard" loading="lazy" />
+              <div class="project-card__overlay" aria-hidden="true"></div>
+            </div>
+            <div class="project-card__body">
+              <div class="project-card__tags">
+                <span class="tag">Power BI</span><span class="tag">Python</span><span class="tag">DAX</span>
+              </div>
+              <h3 class="project-card__title">Supply Chain — Inventory Optimisation Analysis</h3>
+              <p class="project-card__desc">Demand forecasting and stockout risk analysis for a retail distribution network using historical sales data and seasonal adjustment factors.</p>
+              <div class="project-card__footer">
+                <a href="#" class="project-card__link" aria-label="View project details">View Project →</a>
+                <a href="#" class="project-card__github" aria-label="View on GitHub">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ===== LEARNING JOURNEY SECTION ===== -->
-    <section id="journey" class="journey-section section" aria-labelledby="journey-heading">
+    <!-- ═══════════════════ LEARNING JOURNEY ═══════════════════ -->
+    <section class="journey section" id="journey" aria-labelledby="journey-heading">
       <div class="container">
-        <div class="section-header animate-on-scroll">
-          <span class="section-tag">My Path</span>
-          <h2 id="journey-heading" class="section-title">Learning <span class="gradient-text">Journey</span></h2>
-          <p class="section-subtitle">Every step forward, documented</p>
+        <div class="section__header reveal">
+          <span class="section__eyebrow">Learning Journey</span>
+          <h2 class="section__title" id="journey-heading">Building expertise, step by step</h2>
+          <p class="section__subtitle">A structured path through education, certifications, and hands-on experience.</p>
         </div>
 
-        <ol class="timeline" aria-label="Learning journey timeline">
-          <li class="timeline-item animate-on-scroll">
-            <div class="timeline-dot" aria-hidden="true">🎓</div>
-            <div class="timeline-content">
-              <time class="timeline-date" datetime="2022">2022</time>
-              <h3 class="timeline-title">Started Computer Science Degree</h3>
-              <p class="timeline-desc">Enrolled in a Computer Science undergraduate programme. Developed foundations in programming, data structures, and algorithmic thinking.</p>
-              <div class="timeline-tags">
-                <span class="tech-badge">Programming</span>
-                <span class="tech-badge">Algorithms</span>
-              </div>
+        <div class="timeline" role="list">
+          <div class="timeline__item reveal" role="listitem">
+            <div class="timeline__marker" aria-hidden="true"></div>
+            <div class="timeline__content">
+              <div class="timeline__date">2021 — Present</div>
+              <h3 class="timeline__title">B.Sc. Computer Science</h3>
+              <div class="timeline__org">Your University Name</div>
+              <p class="timeline__desc">Full-time undergraduate degree covering algorithms, databases, statistics, software development, and data structures. Maintaining strong academic performance with a focus on data-oriented modules.</p>
+              <div class="timeline__tags"><span class="tag">Databases</span><span class="tag">Statistics</span><span class="tag">Algorithms</span></div>
             </div>
-          </li>
-
-          <li class="timeline-item animate-on-scroll">
-            <div class="timeline-dot" aria-hidden="true">📊</div>
-            <div class="timeline-content">
-              <time class="timeline-date" datetime="2023-03">Early 2023</time>
-              <h3 class="timeline-title">Discovered Data Analytics</h3>
-              <p class="timeline-desc">Became fascinated with how data drives business decisions. Began self-studying Excel deeply — pivot tables, Power Query, and advanced formulas.</p>
-              <div class="timeline-tags">
-                <span class="tech-badge excel">Excel</span>
-                <span class="tech-badge">Power Query</span>
-              </div>
-            </div>
-          </li>
-
-          <li class="timeline-item animate-on-scroll">
-            <div class="timeline-dot" aria-hidden="true">🗄️</div>
-            <div class="timeline-content">
-              <time class="timeline-date" datetime="2023-07">Mid 2023</time>
-              <h3 class="timeline-title">Started Learning SQL</h3>
-              <p class="timeline-desc">Completed online SQL courses covering SELECT, JOINs, aggregations, subqueries, and CTEs. Practised on real datasets from Kaggle.</p>
-              <div class="timeline-tags">
-                <span class="tech-badge sql">SQL</span>
-                <span class="tech-badge">MySQL</span>
-                <span class="tech-badge">Kaggle</span>
-              </div>
-            </div>
-          </li>
-
-          <li class="timeline-item animate-on-scroll">
-            <div class="timeline-dot" aria-hidden="true">📈</div>
-            <div class="timeline-content">
-              <time class="timeline-date" datetime="2024-01">Early 2024</time>
-              <h3 class="timeline-title">Power BI &amp; Data Visualisation</h3>
-              <p class="timeline-desc">Learned Power BI — data modelling, DAX, and interactive dashboard design. Built first end-to-end analytics project for a mock retail business.</p>
-              <div class="timeline-tags">
-                <span class="tech-badge powerbi">Power BI</span>
-                <span class="tech-badge">DAX</span>
-                <span class="tech-badge">Data Modelling</span>
-              </div>
-            </div>
-          </li>
-
-          <li class="timeline-item animate-on-scroll">
-            <div class="timeline-dot" aria-hidden="true">🐍</div>
-            <div class="timeline-content">
-              <time class="timeline-date" datetime="2024-06">Mid 2024</time>
-              <h3 class="timeline-title">Python for Data Analysis</h3>
-              <p class="timeline-desc">Began learning Python with a focus on data analytics — Pandas for data manipulation, NumPy for numerical analysis, and Matplotlib/Seaborn for visualisation.</p>
-              <div class="timeline-tags">
-                <span class="tech-badge python">Python</span>
-                <span class="tech-badge">Pandas</span>
-                <span class="tech-badge">Matplotlib</span>
-              </div>
-            </div>
-          </li>
-
-          <li class="timeline-item animate-on-scroll">
-            <div class="timeline-dot" aria-hidden="true">🏆</div>
-            <div class="timeline-content">
-              <time class="timeline-date" datetime="2025-01">2025</time>
-              <h3 class="timeline-title">Corporate Blueprint Cohort 1</h3>
-              <p class="timeline-desc">Joined a structured data analytics training cohort. Delivered a full learner performance analysis project — from raw data cleaning to Power BI dashboard and business recommendations report.</p>
-              <div class="timeline-tags">
-                <span class="tech-badge excel">Excel</span>
-                <span class="tech-badge powerbi">Power BI</span>
-                <span class="tech-badge python">Python</span>
-                <span class="tech-badge sql">SQL</span>
-              </div>
-            </div>
-          </li>
-
-          <li class="timeline-item animate-on-scroll">
-            <div class="timeline-dot current" aria-hidden="true">🚀</div>
-            <div class="timeline-content">
-              <time class="timeline-date" datetime="2026">2026 – Present</time>
-              <h3 class="timeline-title">Seeking Internship &amp; Freelance Opportunities</h3>
-              <p class="timeline-desc">Actively building portfolio projects, pursuing certifications, and applying for Data Analyst internships. Open to freelance data projects to gain real-world experience.</p>
-              <div class="timeline-tags">
-                <span class="tech-badge" style="background:var(--primary);color:#fff;">Open to Work</span>
-              </div>
-            </div>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ===== CERTIFICATIONS SECTION ===== -->
-    <section id="certifications" class="certs-section section" aria-labelledby="certs-heading">
-      <div class="container">
-        <div class="section-header animate-on-scroll">
-          <span class="section-tag">Credentials</span>
-          <h2 id="certs-heading" class="section-title">Certifications &amp; <span class="gradient-text">Courses</span></h2>
-          <p class="section-subtitle">Formal validation of continuous learning</p>
-        </div>
-
-        <div class="certs-grid">
-
-          <div class="cert-card animate-on-scroll">
-            <div class="cert-icon excel" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-            </div>
-            <h3 class="cert-name">Microsoft Excel – Data Analytics</h3>
-            <p class="cert-issuer">Udemy / Microsoft Learn</p>
-            <p class="cert-year">2023</p>
-            <a href="#" class="cert-link" aria-label="View Excel certification credential">View Credential →</a>
           </div>
 
-          <div class="cert-card animate-on-scroll">
-            <div class="cert-icon sql" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/></svg>
+          <div class="timeline__item reveal" role="listitem">
+            <div class="timeline__marker" aria-hidden="true"></div>
+            <div class="timeline__content">
+              <div class="timeline__date">2024</div>
+              <h3 class="timeline__title">Corporate Blueprint Data Cohort</h3>
+              <div class="timeline__org">Corporate Blueprint</div>
+              <p class="timeline__desc">Intensive programme covering end-to-end data analysis workflows: data collection, cleaning, exploration, modelling, and dashboard development using Excel, SQL, and Power BI on real cohort datasets.</p>
+              <div class="timeline__tags"><span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag">Excel</span><span class="tag">Real Data</span></div>
             </div>
-            <h3 class="cert-name">SQL for Data Analysis</h3>
-            <p class="cert-issuer">Mode Analytics / Coursera</p>
-            <p class="cert-year">2023</p>
-            <a href="#" class="cert-link" aria-label="View SQL certification credential">View Credential →</a>
           </div>
 
-          <div class="cert-card animate-on-scroll">
-            <div class="cert-icon powerbi" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/></svg>
+          <div class="timeline__item reveal" role="listitem">
+            <div class="timeline__marker" aria-hidden="true"></div>
+            <div class="timeline__content">
+              <div class="timeline__date">2023 — 2024</div>
+              <h3 class="timeline__title">Google Data Analytics Certificate</h3>
+              <div class="timeline__org">Google — Coursera</div>
+              <p class="timeline__desc">Six-course professional certificate covering the full data analysis process: ask, prepare, process, analyse, share, and act. Included hands-on projects using SQL, R, spreadsheets, and Tableau.</p>
+              <div class="timeline__tags"><span class="tag">SQL</span><span class="tag">R</span><span class="tag">Tableau</span><span class="tag">Coursera</span></div>
             </div>
-            <h3 class="cert-name">Power BI Data Analyst</h3>
-            <p class="cert-issuer">Microsoft Learn</p>
-            <p class="cert-year">2024</p>
-            <a href="#" class="cert-link" aria-label="View Power BI certification credential">View Credential →</a>
           </div>
 
-          <div class="cert-card animate-on-scroll">
-            <div class="cert-icon python" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+          <div class="timeline__item reveal" role="listitem">
+            <div class="timeline__marker" aria-hidden="true"></div>
+            <div class="timeline__content">
+              <div class="timeline__date">2023</div>
+              <h3 class="timeline__title">Microsoft Power BI Data Analyst</h3>
+              <div class="timeline__org">Microsoft Learn</div>
+              <p class="timeline__desc">Completed Microsoft's official learning path for Power BI, including data modelling, DAX fundamentals, report design, and publishing to Power BI Service for enterprise distribution.</p>
+              <div class="timeline__tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Microsoft</span></div>
             </div>
-            <h3 class="cert-name">Python for Data Science</h3>
-            <p class="cert-issuer">IBM / Coursera</p>
-            <p class="cert-year">2024</p>
-            <a href="#" class="cert-link" aria-label="View Python certification credential">View Credential →</a>
           </div>
 
-          <!-- Coming Soon -->
-          <div class="cert-card coming-soon animate-on-scroll" aria-label="Google Data Analytics Certificate – coming soon">
-            <div class="coming-soon-badge">Coming Soon</div>
-            <div class="cert-icon google" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+          <div class="timeline__item reveal" role="listitem">
+            <div class="timeline__marker" aria-hidden="true"></div>
+            <div class="timeline__content">
+              <div class="timeline__date">2022 — 2023</div>
+              <h3 class="timeline__title">Python for Data Analysis</h3>
+              <div class="timeline__org">DataCamp</div>
+              <p class="timeline__desc">Completed tracks covering Python fundamentals, Pandas, NumPy, and data visualisation. Applied skills through DataCamp practice projects on real datasets from business, healthcare, and finance.</p>
+              <div class="timeline__tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">DataCamp</span></div>
             </div>
-            <h3 class="cert-name">Google Data Analytics</h3>
-            <p class="cert-issuer">Google / Coursera</p>
-            <p class="cert-year">In Progress</p>
           </div>
-
-          <div class="cert-card coming-soon animate-on-scroll" aria-label="Microsoft PL-300 Power BI certification – coming soon">
-            <div class="coming-soon-badge">Coming Soon</div>
-            <div class="cert-icon powerbi" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-            </div>
-            <h3 class="cert-name">Microsoft PL-300 (Power BI)</h3>
-            <p class="cert-issuer">Microsoft Certification</p>
-            <p class="cert-year">Planned 2026</p>
-          </div>
-
-          <div class="cert-card coming-soon animate-on-scroll" aria-label="AWS Cloud Practitioner certification – coming soon">
-            <div class="coming-soon-badge">Coming Soon</div>
-            <div class="cert-icon aws" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
-            </div>
-            <h3 class="cert-name">AWS Cloud Practitioner</h3>
-            <p class="cert-issuer">Amazon Web Services</p>
-            <p class="cert-year">Planned 2026</p>
-          </div>
-
-          <div class="cert-card coming-soon animate-on-scroll" aria-label="Tableau Desktop Specialist certification – coming soon">
-            <div class="coming-soon-badge">Coming Soon</div>
-            <div class="cert-icon viz" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/></svg>
-            </div>
-            <h3 class="cert-name">Tableau Desktop Specialist</h3>
-            <p class="cert-issuer">Tableau / Salesforce</p>
-            <p class="cert-year">Planned 2026</p>
-          </div>
-
         </div>
       </div>
     </section>
 
-    <!-- ===== CONTACT SECTION ===== -->
-    <section id="contact" class="contact-section section" aria-labelledby="contact-heading">
+    <!-- ═══════════════════ CERTIFICATES ═══════════════════ -->
+    <section class="certificates section section--alt" id="certificates" aria-labelledby="certs-heading">
       <div class="container">
-        <div class="section-header animate-on-scroll">
-          <span class="section-tag">Let's Talk</span>
-          <h2 id="contact-heading" class="section-title">Get In <span class="gradient-text">Touch</span></h2>
-          <p class="section-subtitle">Open to internships, freelance projects, and collaborations</p>
+        <div class="section__header reveal">
+          <span class="section__eyebrow">Certifications</span>
+          <h2 class="section__title" id="certs-heading">Verified credentials</h2>
+          <p class="section__subtitle">Certifications from leading industry organisations and learning platforms.</p>
         </div>
 
-        <div class="contact-grid">
-          <!-- Info -->
-          <div class="contact-info animate-on-scroll">
-            <h3 class="contact-info-title">Let's work together</h3>
-            <p class="contact-info-text">
-              I'm currently looking for Data Analyst internship opportunities and open to 
-              freelance data projects. Whether you have a dataset that needs cleaning, a 
-              dashboard to build, or just want to connect — my inbox is always open.
-            </p>
-
-            <div class="contact-details">
-              <div class="contact-detail">
-                <div class="contact-detail-icon" aria-hidden="true">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                </div>
-                <div>
-                  <p class="detail-label">Email</p>
-                  <a href="mailto:esther@email.com" class="detail-value">esther@email.com</a>
-                </div>
-              </div>
-              <div class="contact-detail">
-                <div class="contact-detail-icon" aria-hidden="true">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                </div>
-                <div>
-                  <p class="detail-label">Location</p>
-                  <p class="detail-value">Nigeria (Open to Remote)</p>
-                </div>
+        <div class="certs__grid">
+          <div class="cert-card reveal">
+            <div class="cert-card__header">
+              <div class="cert-card__org-badge" style="background:#EEF2FF;color:#2563EB">G</div>
+              <div class="cert-card__org-info">
+                <div class="cert-card__org">Google</div>
+                <div class="cert-card__platform">via Coursera</div>
               </div>
             </div>
+            <h3 class="cert-card__title">Google Data Analytics Professional Certificate</h3>
+            <p class="cert-card__desc">Six-course programme covering the complete data analysis lifecycle from data collection through presentation.</p>
+            <div class="cert-card__meta">
+              <span class="cert-card__date">Completed: 2024</span>
+              <span class="cert-card__skills">SQL · R · Tableau</span>
+            </div>
+            <a href="#" class="btn btn--sm btn--outline cert-card__btn" aria-label="View Google Data Analytics Certificate">View Certificate</a>
+          </div>
 
-            <div class="contact-social-links" aria-label="Social media links">
-              <a href="#" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Visit Esther's GitHub profile">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-                GitHub
-              </a>
-              <a href="#" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Visit Esther's LinkedIn profile">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                LinkedIn
-              </a>
-              <a href="mailto:esther@email.com" class="social-btn" aria-label="Email Esther directly">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                Email
+          <div class="cert-card reveal">
+            <div class="cert-card__header">
+              <div class="cert-card__org-badge" style="background:#EEF2FF;color:#2563EB">M</div>
+              <div class="cert-card__org-info">
+                <div class="cert-card__org">Microsoft</div>
+                <div class="cert-card__platform">Microsoft Learn</div>
+              </div>
+            </div>
+            <h3 class="cert-card__title">Microsoft Power BI Data Analyst</h3>
+            <p class="cert-card__desc">Official Microsoft learning path covering data modelling, DAX, report design, and enterprise Power BI deployment.</p>
+            <div class="cert-card__meta">
+              <span class="cert-card__date">Completed: 2023</span>
+              <span class="cert-card__skills">Power BI · DAX</span>
+            </div>
+            <a href="#" class="btn btn--sm btn--outline cert-card__btn" aria-label="View Microsoft Power BI Certificate">View Certificate</a>
+          </div>
+
+          <div class="cert-card reveal">
+            <div class="cert-card__header">
+              <div class="cert-card__org-badge" style="background:#F0FFF4;color:#22C55E">D</div>
+              <div class="cert-card__org-info">
+                <div class="cert-card__org">DataCamp</div>
+                <div class="cert-card__platform">DataCamp</div>
+              </div>
+            </div>
+            <h3 class="cert-card__title">Data Analyst with Python Track</h3>
+            <p class="cert-card__desc">Comprehensive track covering Python for data analysis, Pandas, NumPy, data visualisation, and real-world projects.</p>
+            <div class="cert-card__meta">
+              <span class="cert-card__date">Completed: 2023</span>
+              <span class="cert-card__skills">Python · Pandas · NumPy</span>
+            </div>
+            <a href="#" class="btn btn--sm btn--outline cert-card__btn" aria-label="View DataCamp Certificate">View Certificate</a>
+          </div>
+
+          <div class="cert-card reveal">
+            <div class="cert-card__header">
+              <div class="cert-card__org-badge" style="background:#FFF7ED;color:#F97316">CB</div>
+              <div class="cert-card__org-info">
+                <div class="cert-card__org">Corporate Blueprint</div>
+                <div class="cert-card__platform">Data Cohort</div>
+              </div>
+            </div>
+            <h3 class="cert-card__title">Corporate Blueprint Data Analysis Certificate</h3>
+            <p class="cert-card__desc">Intensive programme certificate awarded upon successful completion of the Cohort 1 data analytics project and assessment.</p>
+            <div class="cert-card__meta">
+              <span class="cert-card__date">Completed: 2024</span>
+              <span class="cert-card__skills">SQL · Excel · Power BI</span>
+            </div>
+            <a href="#" class="btn btn--sm btn--outline cert-card__btn" aria-label="View Corporate Blueprint Certificate">View Certificate</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ CONTACT ═══════════════════ -->
+    <section class="contact section" id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__eyebrow">Contact</span>
+          <h2 class="section__title" id="contact-heading">Let's work together</h2>
+          <p class="section__subtitle">Open to internships, entry-level analyst roles, freelance projects, and collaboration opportunities.</p>
+        </div>
+
+        <div class="contact__grid">
+          <div class="contact__info reveal">
+            <div class="contact__info-card">
+              <div class="contact__availability">
+                <span class="contact__avail-dot" aria-hidden="true"></span>
+                <span>Available for opportunities</span>
+              </div>
+              <h3>Get in touch</h3>
+              <p>Whether you have a data challenge, a potential project, or just want to connect — I would love to hear from you.</p>
+
+              <div class="contact__links">
+                <a href="mailto:esther@email.com" class="contact__link" aria-label="Send email to Esther">
+                  <div class="contact__link-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  </div>
+                  <div>
+                    <div class="contact__link-label">Email</div>
+                    <div class="contact__link-value">esther@email.com</div>
+                  </div>
+                </a>
+                <a href="https://linkedin.com/in/YOUR_LINKEDIN" class="contact__link" target="_blank" rel="noopener noreferrer" aria-label="View Esther's LinkedIn profile">
+                  <div class="contact__link-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                  </div>
+                  <div>
+                    <div class="contact__link-label">LinkedIn</div>
+                    <div class="contact__link-value">linkedin.com/in/esther-adekanmbi</div>
+                  </div>
+                </a>
+                <a href="https://github.com/YOUR_GITHUB" class="contact__link" target="_blank" rel="noopener noreferrer" aria-label="View Esther's GitHub profile">
+                  <div class="contact__link-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                  </div>
+                  <div>
+                    <div class="contact__link-label">GitHub</div>
+                    <div class="contact__link-value">github.com/esther-adekanmbi</div>
+                  </div>
+                </a>
+              </div>
+
+              <a href="assets/resume/Esther_Adekanmbi_CV.pdf" class="btn btn--primary" download aria-label="Download Esther's resume">
+                Download Resume
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
               </a>
             </div>
           </div>
 
-          <!-- Form -->
-          <div class="contact-form-wrapper animate-on-scroll">
-            <form class="contact-form" id="contact-form" novalidate aria-label="Contact form">
-              <div class="form-group">
-                <label for="form-name" class="form-label">Full Name <span aria-label="required">*</span></label>
-                <input 
-                  type="text" 
-                  id="form-name" 
-                  name="name" 
-                  class="form-input" 
-                  placeholder="Your full name"
-                  required 
-                  autocomplete="name"
-                  aria-required="true"
-                  aria-describedby="name-error"
-                />
-                <span class="form-error" id="name-error" role="alert" aria-live="polite"></span>
+          <div class="contact__form-wrap reveal">
+            <form class="contact__form" id="contactForm" novalidate aria-label="Contact form">
+              <div class="form__row">
+                <div class="form__group">
+                  <label for="name" class="form__label">Full Name</label>
+                  <input type="text" id="name" name="name" class="form__input" placeholder="Your name" required autocomplete="name" aria-required="true" />
+                  <span class="form__error" id="nameError" role="alert" aria-live="polite"></span>
+                </div>
+                <div class="form__group">
+                  <label for="email" class="form__label">Email Address</label>
+                  <input type="email" id="email" name="email" class="form__input" placeholder="your@email.com" required autocomplete="email" aria-required="true" />
+                  <span class="form__error" id="emailError" role="alert" aria-live="polite"></span>
+                </div>
               </div>
-
-              <div class="form-group">
-                <label for="form-email" class="form-label">Email Address <span aria-label="required">*</span></label>
-                <input 
-                  type="email" 
-                  id="form-email" 
-                  name="email" 
-                  class="form-input" 
-                  placeholder="your@email.com"
-                  required 
-                  autocomplete="email"
-                  aria-required="true"
-                  aria-describedby="email-error"
-                />
-                <span class="form-error" id="email-error" role="alert" aria-live="polite"></span>
+              <div class="form__group">
+                <label for="subject" class="form__label">Subject</label>
+                <select id="subject" name="subject" class="form__input form__select" aria-required="true">
+                  <option value="">Select an option</option>
+                  <option value="internship">Internship Opportunity</option>
+                  <option value="freelance">Freelance Project</option>
+                  <option value="fulltime">Full-time Role</option>
+                  <option value="collaboration">Collaboration</option>
+                  <option value="other">Other</option>
+                </select>
+                <span class="form__error" id="subjectError" role="alert" aria-live="polite"></span>
               </div>
-
-              <div class="form-group">
-                <label for="form-message" class="form-label">Message <span aria-label="required">*</span></label>
-                <textarea 
-                  id="form-message" 
-                  name="message" 
-                  class="form-input form-textarea" 
-                  placeholder="Tell me about your project, internship opportunity, or just say hello…"
-                  rows="6"
-                  required
-                  aria-required="true"
-                  aria-describedby="message-error"
-                ></textarea>
-                <span class="form-error" id="message-error" role="alert" aria-live="polite"></span>
+              <div class="form__group">
+                <label for="message" class="form__label">Message</label>
+                <textarea id="message" name="message" class="form__input form__textarea" placeholder="Tell me about the opportunity or how I can help..." required rows="5" aria-required="true"></textarea>
+                <span class="form__error" id="messageError" role="alert" aria-live="polite"></span>
               </div>
-
-              <button type="submit" class="btn btn-primary btn-full" id="form-submit" aria-label="Send message">
-                <span class="btn-text">Send Message</span>
-                <svg class="btn-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+              <button type="submit" class="btn btn--primary form__submit" aria-label="Send message">
+                <span class="form__submit-text">Send Message</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
               </button>
-
-              <div class="form-success" id="form-success" role="alert" aria-live="polite" hidden>
-                <span aria-hidden="true">✅</span> Message sent! I'll reply within 24–48 hours.
+              <div class="form__success" id="formSuccess" role="alert" aria-live="polite" hidden>
+                Message sent successfully. I will get back to you within 24 hours.
               </div>
             </form>
           </div>
@@ -1190,59 +973,49 @@
 
   </main>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- ═══════════════════ FOOTER ═══════════════════ -->
   <footer class="footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="#home" class="footer-logo" aria-label="Esther Adekanmbi – go to top">EA</a>
-          <p class="footer-tagline">Turning raw data into meaningful insights, one dataset at a time.</p>
-          <div class="footer-socials" aria-label="Social links">
-            <a href="#" class="footer-social" aria-label="GitHub" target="_blank" rel="noopener">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-            <a href="#" class="footer-social" aria-label="LinkedIn" target="_blank" rel="noopener">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            </a>
-            <a href="mailto:esther@email.com" class="footer-social" aria-label="Email">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-            </a>
+    <div class="footer__container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <span class="footer__logo">EA</span>
+          <div>
+            <div class="footer__name">Esther Adekanmbi</div>
+            <div class="footer__title">Data Analyst</div>
           </div>
         </div>
-
-        <nav class="footer-links" aria-label="Footer quick links">
-          <h4 class="footer-links-title">Quick Links</h4>
-          <ul role="list">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#journey">Journey</a></li>
-            <li><a href="#certifications">Certifications</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+        <nav class="footer__nav" aria-label="Footer navigation">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#project">Case Study</a>
+          <a href="#gallery">Projects</a>
+          <a href="#journey">Journey</a>
+          <a href="#contact">Contact</a>
         </nav>
-
-        <div class="footer-cta">
-          <h4 class="footer-links-title">Open To Work</h4>
-          <p>Looking for Data Analyst internships and freelance data projects. Let's collaborate!</p>
-          <a href="#contact" class="btn btn-primary">Hire Me</a>
+        <div class="footer__social">
+          <a href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://github.com/YOUR_GITHUB" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+          <a href="mailto:esther@email.com" aria-label="Send email">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
         </div>
       </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2026 Esther Adekanmbi. All rights reserved.</p>
-        <p>Designed &amp; Built with ❤️ by Esther Adekanmbi</p>
+      <div class="footer__bottom">
+        <span>© 2024 Esther Adekanmbi. All rights reserved.</span>
+        <span>Built with precision · Deployed on GitHub Pages</span>
       </div>
     </div>
   </footer>
 
-  <!-- Back to Top Button -->
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top of page">
-    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top" hidden>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
-  <!-- Main Script -->
-  <script src="script.js" defer></script>
+  <script src="script.js"></script>
 </body>
 </html>

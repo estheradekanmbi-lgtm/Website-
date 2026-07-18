@@ -1,706 +1,559 @@
-/**
- * Esther Adekanmbi Portfolio – script.js
- * Vanilla JS, no frameworks, no dependencies.
- * All features implemented as self-contained initialisation functions.
- */
+/* ═══════════════════════════════════════════════════════
+   ESTHER ADEKANMBI — PREMIUM DATA ANALYST PORTFOLIO
+   script.js — Production JavaScript
+   ═══════════════════════════════════════════════════════ */
 
-/* ============================================================
-   UTILITY HELPERS
-   ============================================================ */
+'use strict';
 
-/**
- * Select a single element (shorthand for querySelector)
- * @param {string} sel – CSS selector
- * @param {Element} [ctx=document] – search context
- * @returns {Element|null}
- */
+/* ── 1. UTILITY ─────────────────────────────────────── */
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
+const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
-/**
- * Select all matching elements (shorthand for querySelectorAll)
- * @param {string} sel – CSS selector
- * @param {Element} [ctx=document] – search context
- * @returns {NodeList}
- */
-const $$ = (sel, ctx = document) => ctx.querySelectorAll(sel);
+const debounce = (fn, delay) => {
+  let t;
+  return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), delay); };
+};
 
+const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
 
-/* ============================================================
-   1. LOADING SCREEN
-   Fades out after 1.5 s, then removes itself from the DOM.
-   ============================================================ */
-function initLoadingScreen() {
-  const screen = $('#loading-screen');
-  if (!screen) return;
+/* ── 2. LOADING SCREEN ──────────────────────────────── */
+function initLoader() {
+  const loader = $('#loader');
+  if (!loader) return;
 
-  // Hide after 1.5 s (CSS loader-fill animation ~1.4 s)
-  setTimeout(() => {
-    screen.classList.add('hidden');
+  const hide = () => {
+    loader.classList.add('loader--hidden');
+    loader.addEventListener('transitionend', () => loader.remove(), { once: true });
+    document.body.style.overflow = '';
+  };
 
-    // Remove from DOM after CSS transition (600 ms)
-    screen.addEventListener('transitionend', () => screen.remove(), { once: true });
+  document.body.style.overflow = 'hidden';
 
-    // Fallback removal in case transitionend doesn't fire
-    setTimeout(() => { if (screen.parentNode) screen.remove(); }, 700);
-  }, 1500);
+  if (document.readyState === 'complete') {
+    setTimeout(hide, 800);
+  } else {
+    window.addEventListener('load', () => setTimeout(hide, 500), { once: true });
+  }
 }
 
+/* ── 3. THEME (DARK / LIGHT) ────────────────────────── */
+function initTheme() {
+  const toggle = $('#themeToggle');
+  const html   = document.documentElement;
 
-/* ============================================================
-   2. DARK / LIGHT MODE TOGGLE
-   Reads system preference on first load; persists to localStorage.
-   ============================================================ */
-function initDarkMode() {
-  const btn   = $('#theme-toggle');
-  const html  = document.documentElement;
-  const icon  = btn ? btn.querySelector('.theme-icon') : null;
+  const STORAGE_KEY = 'ea-portfolio-theme';
+  const saved = localStorage.getItem(STORAGE_KEY);
+  const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
-  // Determine initial theme
-  const saved  = localStorage.getItem('ea-theme');
-  const system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  const initial = saved || system;
+  const apply = (theme) => {
+    html.setAttribute('data-theme', theme);
+    toggle && (toggle.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`));
+    localStorage.setItem(STORAGE_KEY, theme);
+  };
 
-  applyTheme(initial);
+  apply(saved || preferred);
 
-  btn && btn.addEventListener('click', () => {
-    const current = html.dataset.theme;
-    const next    = current === 'dark' ? 'light' : 'dark';
-    applyTheme(next);
-    localStorage.setItem('ea-theme', next);
+  toggle?.addEventListener('click', () => {
+    const current = html.getAttribute('data-theme');
+    apply(current === 'dark' ? 'light' : 'dark');
   });
 
-  // Also listen for system preference changes (when no saved preference)
+  // Sync with system changes
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-    if (!localStorage.getItem('ea-theme')) {
-      applyTheme(e.matches ? 'dark' : 'light');
-    }
+    if (!localStorage.getItem(STORAGE_KEY)) apply(e.matches ? 'dark' : 'light');
   });
-
-  function applyTheme(theme) {
-    html.dataset.theme = theme;
-    html.classList.toggle('light-mode', theme === 'light');
-    if (icon) icon.textContent = theme === 'dark' ? '☀️' : '🌙';
-    if (btn) btn.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`);
-  }
 }
 
-
-/* ============================================================
-   3. SCROLL PROGRESS BAR
-   Updates the width of #scroll-progress as the user scrolls.
-   ============================================================ */
-function initScrollProgress() {
-  const bar = $('#scroll-progress');
-  if (!bar) return;
-
-  function updateProgress() {
-    const scrollTop  = window.scrollY || document.documentElement.scrollTop;
-    const docHeight  = document.documentElement.scrollHeight - window.innerHeight;
-    const pct        = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    bar.style.width  = pct.toFixed(2) + '%';
-    bar.setAttribute('aria-valuenow', Math.round(pct));
-  }
-
-  window.addEventListener('scroll', updateProgress, { passive: true });
-  updateProgress(); // run once on load
-}
-
-
-/* ============================================================
-   4. STICKY NAVBAR – glassmorphism on scroll
-   ============================================================ */
-function initStickyNav() {
-  const nav = $('#navbar');
+/* ── 4. STICKY NAVIGATION ───────────────────────────── */
+function initNav() {
+  const nav    = $('#nav');
+  const toggle = $('#navToggle');
+  const links  = $('#navLinks');
   if (!nav) return;
 
-  function onScroll() {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-  }
+  let lastY = 0;
+
+  const onScroll = () => {
+    const y = window.scrollY;
+    nav.classList.toggle('nav--scrolled', y > 20);
+    lastY = y;
+  };
 
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
-}
 
-
-/* ============================================================
-   5. SCROLL SPY
-   Highlights the correct nav link based on the current section.
-   ============================================================ */
-function initScrollSpy() {
-  const links    = $$('.nav-link');
-  const sections = $$('section[id], div[id="home"]');
-
-  const sectionIds = Array.from(links).map(l => l.getAttribute('href')?.replace('#', '')).filter(Boolean);
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.id;
-        links.forEach(link => {
-          const matches = link.getAttribute('href') === `#${id}`;
-          link.classList.toggle('active', matches);
-          link.setAttribute('aria-current', matches ? 'page' : 'false');
-        });
-      }
-    });
-  }, {
-    threshold: 0.3,
-    rootMargin: '-80px 0px -60% 0px'
-  });
-
-  sections.forEach(s => {
-    if (sectionIds.includes(s.id)) observer.observe(s);
-  });
-}
-
-
-/* ============================================================
-   6. MOBILE NAV TOGGLE
-   Opens/closes the full-screen nav overlay on small screens.
-   ============================================================ */
-function initMobileNav() {
-  const toggle = $('#nav-toggle');
-  const links  = $('#nav-links');
-  if (!toggle || !links) return;
-
-  toggle.addEventListener('click', () => {
-    const isOpen = links.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', String(isOpen));
-    document.body.style.overflow = isOpen ? 'hidden' : '';
+  // Mobile menu
+  toggle?.addEventListener('click', () => {
+    const open = toggle.classList.toggle('nav__toggle--open');
+    toggle.setAttribute('aria-expanded', String(open));
+    links?.classList.toggle('nav__links--open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
   });
 
   // Close on link click
-  links.querySelectorAll('.nav-link').forEach(link => {
+  $$('.nav__link', links).forEach(link => {
     link.addEventListener('click', () => {
-      links.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
+      toggle?.classList.remove('nav__toggle--open');
+      toggle?.setAttribute('aria-expanded', 'false');
+      links?.classList.remove('nav__links--open');
       document.body.style.overflow = '';
     });
   });
 
-  // Close on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && links.classList.contains('open')) {
-      links.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (links?.classList.contains('nav__links--open') && !nav.contains(e.target)) {
+      toggle?.classList.remove('nav__toggle--open');
+      toggle?.setAttribute('aria-expanded', 'false');
+      links.classList.remove('nav__links--open');
       document.body.style.overflow = '';
-      toggle.focus();
     }
   });
 }
 
+/* ── 5. SCROLL PROGRESS BAR ─────────────────────────── */
+function initScrollProgress() {
+  const bar = $('#scrollProgress');
+  if (!bar) return;
 
-/* ============================================================
-   7. TYPING ANIMATION
-   Cycles through an array of role strings with a typewriter effect.
-   ============================================================ */
+  const update = () => {
+    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+    const pct = scrollHeight <= clientHeight ? 0 : (scrollTop / (scrollHeight - clientHeight)) * 100;
+    bar.style.width = `${clamp(pct, 0, 100)}%`;
+  };
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+}
+
+/* ── 6. SCROLL SPY (active nav link) ────────────────── */
+function initScrollSpy() {
+  const navLinks = $$('.nav__link[data-section]');
+  if (!navLinks.length) return;
+
+  const sections = navLinks
+    .map(link => {
+      const id = link.dataset.section;
+      const el = $(`#${id}`);
+      return el ? { link, el } : null;
+    })
+    .filter(Boolean);
+
+  const activate = debounce(() => {
+    const scrollY = window.scrollY + window.innerHeight * 0.35;
+
+    let active = null;
+    sections.forEach(({ el }) => {
+      if (el.offsetTop <= scrollY) active = el.id;
+    });
+
+    navLinks.forEach(link => {
+      link.classList.toggle('nav__link--active', link.dataset.section === active);
+    });
+  }, 60);
+
+  window.addEventListener('scroll', activate, { passive: true });
+  activate();
+}
+
+/* ── 7. REVEAL ON SCROLL (IntersectionObserver) ─────── */
+function initReveal() {
+  const targets = $$('.reveal');
+  if (!targets.length) return;
+
+  // Skip if user prefers reduced motion
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    targets.forEach(el => el.classList.add('reveal--visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal--visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
+  );
+
+  targets.forEach(el => observer.observe(el));
+}
+
+/* ── 8. TYPING EFFECT ───────────────────────────────── */
 function initTyping() {
-  const target = $('#typing-text');
-  if (!target) return;
+  const el = $('#typingText');
+  if (!el) return;
 
   const phrases = [
-    'Aspiring Data Analyst',
-    'Computer Science Student',
-    'Excel Enthusiast',
-    'SQL Learner',
-    'Power BI Explorer',
-    'Python for Data'
+    'actionable decisions.',
+    'business intelligence.',
+    'measurable impact.',
+    'clear insights.',
+    'competitive advantage.',
   ];
 
-  let phraseIdx  = 0;
-  let charIdx    = 0;
-  let deleting   = false;
-  let pauseTimer = null;
+  let phraseIdx = 0;
+  let charIdx   = 0;
+  let deleting  = false;
+  let timer     = null;
 
-  const TYPING_SPEED   = 80;   // ms per character typed
-  const DELETING_SPEED = 45;   // ms per character deleted
-  const PAUSE_AFTER    = 2000; // ms pause after full phrase
-
-  function tick() {
+  const type = () => {
     const current = phrases[phraseIdx];
 
-    if (deleting) {
-      // Remove one character
-      charIdx--;
-      target.textContent = current.slice(0, charIdx);
-
-      if (charIdx === 0) {
-        deleting = false;
-        phraseIdx = (phraseIdx + 1) % phrases.length;
-        setTimeout(tick, 400);
-      } else {
-        setTimeout(tick, DELETING_SPEED);
+    if (!deleting) {
+      el.textContent = current.slice(0, charIdx + 1);
+      charIdx++;
+      if (charIdx === current.length) {
+        deleting = true;
+        timer = setTimeout(type, 2200);
+        return;
       }
     } else {
-      // Add one character
-      charIdx++;
-      target.textContent = current.slice(0, charIdx);
-
-      if (charIdx === current.length) {
-        // Full phrase typed – pause before deleting
-        deleting = true;
-        setTimeout(tick, PAUSE_AFTER);
-      } else {
-        setTimeout(tick, TYPING_SPEED);
+      el.textContent = current.slice(0, charIdx - 1);
+      charIdx--;
+      if (charIdx === 0) {
+        deleting   = false;
+        phraseIdx  = (phraseIdx + 1) % phrases.length;
       }
     }
-  }
 
-  // Short initial delay so loading screen has faded
-  setTimeout(tick, 1800);
+    timer = setTimeout(type, deleting ? 42 : 78);
+  };
+
+  timer = setTimeout(type, 800);
+
+  return () => clearTimeout(timer); // cleanup
 }
 
-
-/* ============================================================
-   8. HERO PARTICLES
-   Creates lightweight floating particle elements in the hero.
-   ============================================================ */
-function initHeroParticles() {
-  const container = $('#hero-particles');
-  if (!container) return;
-
-  // Reduced motion check
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  const COUNT = 18;
-
-  for (let i = 0; i < COUNT; i++) {
-    const p = document.createElement('div');
-    p.className = 'particle';
-
-    const size   = Math.random() * 5 + 3;
-    const left   = Math.random() * 100;
-    const delay  = Math.random() * 10;
-    const dur    = Math.random() * 12 + 10;
-    const opacity = Math.random() * 0.3 + 0.1;
-
-    p.style.cssText = `
-      width:${size}px; height:${size}px;
-      left:${left}%;
-      animation-delay:${delay}s;
-      animation-duration:${dur}s;
-      opacity:${opacity};
-    `;
-    container.appendChild(p);
-  }
-}
-
-
-/* ============================================================
-   9. INTERSECTION OBSERVER – Scroll animations
-   Adds "visible" class when elements enter viewport.
-   Also triggers skill bars and counter animations.
-   ============================================================ */
-function initScrollAnimations() {
-  const elements = $$('.animate-on-scroll');
-  if (!elements.length) return;
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-
-        // Skill bars: animate fill width when visible
-        entry.target.querySelectorAll('.skill-fill').forEach(fill => {
-          const width = fill.dataset.width || '0';
-          setTimeout(() => { fill.style.width = width + '%'; }, 100);
-        });
-
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
-  });
-
-  elements.forEach(el => observer.observe(el));
-}
-
-
-/* ============================================================
-   10. COUNTER ANIMATION
-   Animates .stat-number elements from 0 to their data-target value.
-   ============================================================ */
-function initCounterAnimations() {
-  const counters = $$('.stat-number');
+/* ── 9. ANIMATED COUNTERS ───────────────────────────── */
+function initCounters() {
+  const counters = $$('[data-count]');
   if (!counters.length) return;
 
-  const DURATION = 1800; // ms
+  const easeOut = (t) => 1 - Math.pow(1 - t, 3);
 
-  function animateCounter(el) {
-    const target = parseInt(el.dataset.target, 10);
-    const suffix = el.dataset.suffix || '';
+  const animate = (el, target, duration = 1600) => {
     const start  = performance.now();
-    const startVal = 0;
-
-    function easeOut(t) {
-      return 1 - Math.pow(1 - t, 3); // cubic ease out
-    }
-
-    function step(now) {
+    const update = (now) => {
       const elapsed  = now - start;
-      const progress = Math.min(elapsed / DURATION, 1);
-      const value    = Math.round(easeOut(progress) * (target - startVal) + startVal);
-      el.textContent = value + suffix;
+      const progress = clamp(elapsed / duration, 0, 1);
+      el.textContent = Math.round(easeOut(progress) * target);
+      if (progress < 1) requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+  };
 
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      } else {
-        el.textContent = target + suffix;
-      }
-    }
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el     = entry.target;
+          const target = parseInt(el.dataset.count, 10);
+          animate(el, target);
+          observer.unobserve(el);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
 
-    requestAnimationFrame(step);
-  }
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateCounter(entry.target);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.5 });
-
-  counters.forEach(c => observer.observe(c));
+  counters.forEach(el => observer.observe(el));
 }
 
-
-/* ============================================================
-   11. SKILLS TABS
-   Switches between Technical and Professional skill panels.
-   ============================================================ */
+/* ── 10. SKILLS TABS ────────────────────────────────── */
 function initSkillsTabs() {
-  const buttons  = $$('.tab-btn');
-  const contents = $$('.tab-content');
-  if (!buttons.length) return;
+  const tabs   = $$('.skills__tab');
+  const panels = $$('.skills__panel');
+  if (!tabs.length) return;
 
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const target = btn.dataset.tab;
+  const activate = (tabEl) => {
+    const id = tabEl.dataset.tab;
 
-      // Update button states
-      buttons.forEach(b => {
-        const active = b === btn;
-        b.classList.toggle('active', active);
-        b.setAttribute('aria-selected', String(active));
-      });
-
-      // Show/hide panels
-      contents.forEach(panel => {
-        const show = panel.id === `tab-${target}`;
-        panel.classList.toggle('active', show);
-        panel.hidden = !show;
-
-        // Re-trigger skill bar animations for newly shown panel
-        if (show) {
-          panel.querySelectorAll('.animate-on-scroll').forEach(el => {
-            el.classList.add('visible');
-            el.querySelectorAll('.skill-fill').forEach(fill => {
-              fill.style.width = '0%';
-              setTimeout(() => { fill.style.width = (fill.dataset.width || '0') + '%'; }, 50);
-            });
-          });
-        }
-      });
+    tabs.forEach(t => {
+      t.classList.toggle('skills__tab--active', t === tabEl);
+      t.setAttribute('aria-selected', String(t === tabEl));
     });
 
-    // Keyboard: arrow key navigation between tabs
-    btn.addEventListener('keydown', (e) => {
-      const btns = Array.from(buttons);
-      const idx  = btns.indexOf(btn);
-      if (e.key === 'ArrowRight' && idx < btns.length - 1) {
+    panels.forEach(panel => {
+      const active = panel.id === `tab-${id}`;
+      panel.classList.toggle('skills__panel--active', active);
+      panel.hidden = !active;
+    });
+
+    // Re-trigger reveal animations for newly visible cards
+    const newCards = $$('.reveal', $(`#tab-${id}`));
+    newCards.forEach(card => {
+      card.classList.remove('reveal--visible');
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => card.classList.add('reveal--visible'));
+      });
+    });
+  };
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => activate(tab));
+
+    // Keyboard navigation within tablist
+    tab.addEventListener('keydown', (e) => {
+      const idx = tabs.indexOf(tab);
+      if (e.key === 'ArrowRight') {
         e.preventDefault();
-        btns[idx + 1].focus();
-        btns[idx + 1].click();
-      } else if (e.key === 'ArrowLeft' && idx > 0) {
+        tabs[(idx + 1) % tabs.length].focus();
+      } else if (e.key === 'ArrowLeft') {
         e.preventDefault();
-        btns[idx - 1].focus();
-        btns[idx - 1].click();
+        tabs[(idx - 1 + tabs.length) % tabs.length].focus();
       }
     });
   });
 }
 
-
-/* ============================================================
-   12. PROJECT FILTER
-   Filters project cards based on category data-attribute.
-   ============================================================ */
+/* ── 11. PROJECT FILTER ─────────────────────────────── */
 function initProjectFilter() {
-  const buttons = $$('.filter-btn');
-  const cards   = $$('.project-card');
-  if (!buttons.length || !cards.length) return;
+  const btns  = $$('.filter-btn');
+  const cards = $$('.project-card');
+  if (!btns.length) return;
 
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const filter = btn.dataset.filter;
+  const filter = (category) => {
+    btns.forEach(btn => {
+      btn.classList.toggle('filter-btn--active', btn.dataset.filter === category);
+    });
 
-      // Update button states
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+    cards.forEach((card, i) => {
+      const cats   = (card.dataset.category || '').split(' ');
+      const visible = category === 'all' || cats.includes(category);
 
-      // Filter cards
-      cards.forEach(card => {
-        const categories = card.dataset.category || '';
-        const show = filter === 'all' || categories.includes(filter);
-
-        if (show) {
-          card.classList.remove('hidden');
-          // Re-animate
-          card.classList.remove('visible');
-          requestAnimationFrame(() => {
-            card.classList.add('visible');
-          });
-        } else {
-          card.classList.add('hidden');
-        }
-      });
-
-      // Announce to screen readers
-      const grid = $('#projects-grid');
-      if (grid) {
-        const visible = Array.from(cards).filter(c => !c.classList.contains('hidden')).length;
-        grid.setAttribute('aria-label', `${visible} project${visible !== 1 ? 's' : ''} shown`);
+      if (visible) {
+        card.classList.remove('is-hidden');
+        card.style.transitionDelay = `${i * 60}ms`;
+      } else {
+        card.classList.add('is-hidden');
+        card.style.transitionDelay = '0ms';
       }
     });
+  };
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => filter(btn.dataset.filter));
   });
 }
 
-
-/* ============================================================
-   13. CONTACT FORM VALIDATION
-   Client-side JS validation with aria-live error messages.
-   ============================================================ */
+/* ── 12. CONTACT FORM VALIDATION ────────────────────── */
 function initContactForm() {
-  const form    = $('#contact-form');
-  const submitBtn = $('#form-submit');
-  const success = $('#form-success');
+  const form    = $('#contactForm');
+  const success = $('#formSuccess');
   if (!form) return;
 
-  /**
-   * Validate a single field
-   * @param {HTMLElement} field
-   * @returns {boolean} isValid
-   */
-  function validateField(field) {
-    const errorEl = $('#' + field.getAttribute('aria-describedby'));
-    let error = '';
+  const fields = {
+    name:    { el: $('#name'),    err: $('#nameError'),    validate: v => v.trim().length >= 2 ? '' : 'Please enter your full name.' },
+    email:   { el: $('#email'),   err: $('#emailError'),   validate: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? '' : 'Please enter a valid email address.' },
+    subject: { el: $('#subject'), err: $('#subjectError'), validate: v => v ? '' : 'Please select a subject.' },
+    message: { el: $('#message'), err: $('#messageError'), validate: v => v.trim().length >= 20 ? '' : 'Message must be at least 20 characters.' },
+  };
 
-    if (field.required && !field.value.trim()) {
-      error = 'This field is required.';
-    } else if (field.type === 'email' && field.value.trim()) {
-      const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRx.test(field.value.trim())) {
-        error = 'Please enter a valid email address.';
-      }
-    } else if (field.tagName === 'TEXTAREA' && field.value.trim().length < 10) {
-      error = 'Message must be at least 10 characters.';
-    }
+  const showError = (field, msg) => {
+    field.el?.classList.toggle('form__input--error', !!msg);
+    if (field.err) field.err.textContent = msg;
+  };
 
-    field.classList.toggle('error', !!error);
-    if (errorEl) errorEl.textContent = error;
+  const validateField = (key) => {
+    const f   = fields[key];
+    const msg = f.validate(f.el?.value || '');
+    showError(f, msg);
+    return !msg;
+  };
 
-    return !error;
-  }
-
-  // Validate on blur for instant feedback
-  $$('input, textarea', form).forEach(field => {
-    field.addEventListener('blur', () => validateField(field));
-    field.addEventListener('input', () => {
-      if (field.classList.contains('error')) validateField(field);
+  // Live validation on blur
+  Object.keys(fields).forEach(key => {
+    fields[key].el?.addEventListener('blur', () => validateField(key));
+    fields[key].el?.addEventListener('input', () => {
+      if (fields[key].el?.classList.contains('form__input--error')) validateField(key);
     });
   });
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const fields  = Array.from($$('input, textarea', form));
-    const allValid = fields.every(validateField);
+    const valid = Object.keys(fields).map(validateField).every(Boolean);
+    if (!valid) return;
 
-    if (!allValid) {
-      // Focus first invalid field
-      const firstError = fields.find(f => f.classList.contains('error'));
-      if (firstError) firstError.focus();
-      return;
-    }
-
-    // Simulate submission (no backend — GitHub Pages is static)
-    const btnText = submitBtn.querySelector('.btn-text');
-    submitBtn.disabled = true;
-    if (btnText) btnText.textContent = 'Sending…';
+    // Simulate async submission
+    const btn  = form.querySelector('.form__submit');
+    const text = form.querySelector('.form__submit-text');
+    btn.disabled = true;
+    if (text) text.textContent = 'Sending...';
 
     setTimeout(() => {
       form.reset();
-      submitBtn.disabled = false;
-      if (btnText) btnText.textContent = 'Send Message';
-      if (success) {
-        success.hidden = false;
-        success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        setTimeout(() => { success.hidden = true; }, 6000);
-      }
-    }, 1200);
+      Object.keys(fields).forEach(key => showError(fields[key], ''));
+      btn.disabled = false;
+      if (text) text.textContent = 'Send Message';
+      success && (success.hidden = false);
+      setTimeout(() => success && (success.hidden = true), 5000);
+    }, 1400);
   });
 }
 
-
-/* ============================================================
-   14. BACK TO TOP BUTTON
-   Shows when scrolled more than 300px; smooth scrolls to top.
-   ============================================================ */
+/* ── 13. BACK TO TOP ────────────────────────────────── */
 function initBackToTop() {
-  const btn = $('#back-to-top');
+  const btn = $('#backToTop');
   if (!btn) return;
 
-  window.addEventListener('scroll', () => {
-    btn.classList.toggle('visible', window.scrollY > 300);
-  }, { passive: true });
+  const toggle = debounce(() => {
+    btn.hidden = window.scrollY < 400;
+  }, 100);
+
+  window.addEventListener('scroll', toggle, { passive: true });
+  toggle();
 
   btn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    // Return focus to top landmark
-    const main = $('#main-content');
-    if (main) main.focus();
   });
 }
 
-
-/* ============================================================
-   15. LAZY LOAD IMAGES
-   Uses IntersectionObserver + native loading="lazy" as backup.
-   Adds a fade-in effect as images load.
-   ============================================================ */
+/* ── 14. LAZY IMAGE LOADING ─────────────────────────── */
 function initLazyImages() {
-  // Native lazy loading is already set via loading="lazy" in HTML.
-  // This adds a visual fade-in when images load.
-  $$('img[loading="lazy"]').forEach(img => {
-    if (img.complete) {
+  const imgs = $$('img[loading="lazy"]');
+  if (!imgs.length || !('IntersectionObserver' in window)) return;
+
+  imgs.forEach(img => {
+    img.style.transition = 'opacity 0.4s ease';
+    if (!img.complete) img.style.opacity = '0';
+
+    img.addEventListener('load', () => { img.style.opacity = '1'; });
+    img.addEventListener('error', () => {
+      // Replace broken image with a clean SVG placeholder
       img.style.opacity = '1';
+      img.alt = img.alt || 'Project preview';
+      img.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500'%3E%3Crect width='800' height='500' fill='%23F3F4F6'/%3E%3Crect x='340' y='200' width='120' height='100' rx='8' fill='%23E5E7EB'/%3E%3Crect x='360' y='160' width='80' height='4' rx='2' fill='%23E5E7EB'/%3E%3C/svg%3E`;
+    });
+  });
+}
+
+/* ── 15. SMOOTH SCROLL ──────────────────────────────── */
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+      const id = anchor.getAttribute('href').slice(1);
+      if (!id) return;
+      const target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Update URL without jumping
+      history.pushState(null, '', `#${id}`);
+    });
+  });
+}
+
+/* ── 16. KEYBOARD ACCESSIBILITY ─────────────────────── */
+function initKeyboardA11y() {
+  // Trap focus inside mobile menu when open
+  const nav   = $('#nav');
+  const links = $('#navLinks');
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      // Close mobile nav on Escape
+      const toggle = $('#navToggle');
+      if (links?.classList.contains('nav__links--open')) {
+        toggle?.classList.remove('nav__toggle--open');
+        toggle?.setAttribute('aria-expanded', 'false');
+        links.classList.remove('nav__links--open');
+        document.body.style.overflow = '';
+        toggle?.focus();
+      }
+    }
+  });
+
+  // Ensure all interactive elements have visible focus states
+  document.addEventListener('mousedown', () => document.body.classList.add('using-mouse'));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab') document.body.classList.remove('using-mouse');
+  });
+}
+
+/* ── 17. DASHBOARD BAR ANIMATION (hero) ─────────────── */
+function initDashboardAnimation() {
+  const bars = $$('.dashboard__bar');
+  if (!bars.length) return;
+
+  // Stagger the animation when bars come into view
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          bars.forEach((bar, i) => {
+            bar.style.animationDelay = `${i * 80 + 200}ms`;
+          });
+          observer.disconnect();
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  bars[0] && observer.observe(bars[0]);
+}
+
+/* ── 18. HBAR FILL ANIMATION (case study dashboard) ─── */
+function initHbarAnimation() {
+  const hbarFills = $$('.dashboard-mock__hbar-fill');
+  if (!hbarFills.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          hbarFills.forEach((fill, i) => {
+            fill.style.animationDelay = `${i * 100 + 300}ms`;
+          });
+          observer.disconnect();
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  hbarFills[0] && observer.observe(hbarFills[0]);
+}
+
+/* ── 19. SKILL PANEL INITIAL STATE ─────────────────── */
+function initSkillPanels() {
+  const panels = $$('.skills__panel');
+  panels.forEach(panel => {
+    if (!panel.classList.contains('skills__panel--active')) {
+      panel.hidden = true;
     } else {
-      img.style.opacity = '0';
-      img.style.transition = 'opacity 0.4s ease';
-      img.addEventListener('load', () => { img.style.opacity = '1'; }, { once: true });
-      img.addEventListener('error', () => {
-        // Graceful degradation: show a styled placeholder
-        img.style.opacity = '0.4';
-        img.setAttribute('alt', img.getAttribute('alt') + ' (image unavailable)');
-      }, { once: true });
+      // Trigger reveal for first visible panel
+      const cards = $$('.reveal', panel);
+      cards.forEach((card, i) => {
+        setTimeout(() => card.classList.add('reveal--visible'), i * 80 + 200);
+      });
     }
   });
 }
 
-
-/* ============================================================
-   16. KEYBOARD ACCESSIBILITY ENHANCEMENTS
-   Ensures cards and project overlays are keyboard-reachable.
-   ============================================================ */
-function initKeyboardA11y() {
-  // Make project cards keyboard-focusable for overlay reveal effect
-  $$('.project-card').forEach(card => {
-    const link = card.querySelector('.project-overlay a');
-    if (!link) return;
-
-    card.setAttribute('tabindex', '-1'); // card itself not focusable; link is
-
-    // Show overlay on focus of inner link
-    link.addEventListener('focus', () => card.querySelector('.project-overlay').style.opacity = '1');
-    link.addEventListener('blur',  () => card.querySelector('.project-overlay').style.opacity = '');
-  });
-
-  // Accordion: ensure keyboard activation works (details/summary is native)
-  $$('.accordion-summary').forEach(summary => {
-    summary.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        summary.closest('details').open = !summary.closest('details').open;
-      }
-    });
-  });
-}
-
-
-/* ============================================================
-   17. SMOOTH ANCHOR NAVIGATION
-   Offsets scroll target by navbar height.
-   ============================================================ */
-function initSmoothScroll() {
-  const nav = $('#navbar');
-
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', (e) => {
-      const href = anchor.getAttribute('href');
-      if (!href || href === '#') return;
-
-      const target = document.querySelector(href);
-      if (!target) return;
-
-      e.preventDefault();
-
-      const navHeight = nav ? nav.offsetHeight : 72;
-      const top       = target.getBoundingClientRect().top + window.scrollY - navHeight - 16;
-
-      window.scrollTo({ top, behavior: 'smooth' });
-
-      // Update URL without triggering jump
-      history.pushState(null, '', href);
-
-      // Move focus to the section for screen readers
-      target.setAttribute('tabindex', '-1');
-      target.focus({ preventScroll: true });
-    });
-  });
-}
-
-
-/* ============================================================
-   18. INITIAL SKILL BAR FILL
-   Fills skill bars that are already in view on page load.
-   ============================================================ */
-function initSkillBarsVisible() {
-  // Run after a short delay to allow IntersectionObserver to fire first
-  setTimeout(() => {
-    $$('.skill-card.visible .skill-fill').forEach(fill => {
-      fill.style.width = (fill.dataset.width || '0') + '%';
-    });
-  }, 300);
-}
-
-
-/* ============================================================
-   MAIN INIT – runs when DOM is ready
-   ============================================================ */
-function init() {
-  // Core
-  initLoadingScreen();
-  initDarkMode();
+/* ── INITIALISE ─────────────────────────────────────── */
+(function init() {
+  initLoader();
+  initTheme();
+  initNav();
   initScrollProgress();
-  initStickyNav();
   initScrollSpy();
-  initMobileNav();
-  initSmoothScroll();
-
-  // Hero
+  initReveal();
   initTyping();
-  initHeroParticles();
-
-  // Sections
-  initScrollAnimations();
-  initCounterAnimations();
+  initCounters();
   initSkillsTabs();
-  initSkillBarsVisible();
+  initSkillPanels();
   initProjectFilter();
-
-  // Contact & UI
   initContactForm();
   initBackToTop();
   initLazyImages();
+  initSmoothScroll();
   initKeyboardA11y();
-}
-
-// Wait for DOM ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
-} else {
-  init(); // DOM already parsed (deferred script)
-}
+  initDashboardAnimation();
+  initHbarAnimation();
+})();
