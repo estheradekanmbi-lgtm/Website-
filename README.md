@@ -26,11 +26,11 @@ Before going live, update every item in this table:
 
 | File | What to change | Where |
 |------|---------------|-------|
-| `index.html` | Your real email | `esther@email.com` (×3) |
+| `index.html` | Your real email | `ebunoluwadekanmbi@gmail.com` (×3) |
 | `index.html` | LinkedIn URL | `YOUR_LINKEDIN` (×3) |
 | `index.html` | GitHub URL | `YOUR_GITHUB` (×3) |
-| `index.html` | University name | "Your University Name" (×2) |
-| `index.html` | Graduation year | "Expected Graduation: 2025" |
+| `index.html` | University name | "Ladoke Akintola University of Technology " (×2) |
+| `index.html` | Graduation year | "Expected Graduation: 2027" |
 | `index.html` | OG/Twitter image | `assets/images/og-image.jpg` |
 | `index.html` | Canonical URL | `https://yourdomain.github.io/` |
 | `index.html` | Schema.org URLs | sameAs LinkedIn + GitHub |
@@ -179,4 +179,4 @@ emailjs.send('SERVICE_ID', 'TEMPLATE_ID', formData);
 
 ---
 
-© 2024 Esther Adekanmbi. All rights reserved.
+© 2026 Esther Adekanmbi. All rights reserved.
