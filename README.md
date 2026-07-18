@@ -3,14 +3,14 @@
     Premium single-page portfolio. HTML5 + CSS3 + Vanilla JS. No frameworks, no dependencies.
     Ready to deploy to GitHub Pages immediately.
 
-    ## 🚀 Deploy to GitHub Pages
+    ##  Deploy to GitHub Pages
 
     1. Create a GitHub repo (e.g. `estheradekanmbi.github.io`)
     2. Upload ALL files maintaining the folder structure
     3. Go to **Settings → Pages → Source → main branch / (root)**
     4. Live at `https://estheradekanmbi.github.io`
 
-    ## 📁 File Structure
+    ##  File Structure
 
     ```
     /
@@ -25,7 +25,7 @@
           └── Esther_Adekanmbi_CV.pdf  ← Replace with your real CV
     ```
 
-    ## ✏️ Customise
+    ## Customise
 
     | What | Where |
     |------|-------|
@@ -36,7 +36,7 @@
     | Email | Replace all `esther@email.com` instances |
     | Color | `style.css` → `--primary: #7C3AED` |
 
-    ## ✅ Features
+    ##  Features
 
     - Loading screen (1.5 s fade)
     - Scroll progress bar (4 px purple)
